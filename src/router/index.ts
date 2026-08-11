@@ -69,6 +69,16 @@ export const router = createRouter({
       component: () => import('@/pages/auth/two-factor.vue'),
       meta: { layout: 'blank', title: 'Two-factor authentication' },
     },
+    {
+      path: '/errors/500',
+      component: () => import('@/pages/errors/server-error.vue'),
+      meta: { layout: 'blank', title: 'Server error' },
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      component: () => import('@/pages/errors/not-found.vue'),
+      meta: { layout: 'blank', title: 'Page not found' },
+    },
   ],
 })
 
