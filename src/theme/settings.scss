@@ -1,0 +1,72 @@
+// =============================================================
+// Layer 1 — SASS variable overrides
+// vite-plugin-vuetify points every internal `@use 'vuetify/settings'`
+// at this file, so the `with (...)` block below reconfigures all of
+// Vuetify's compiled CSS. Component-level variables (buttons, fields,
+// cards, ...) are forwarded from here too.
+// =============================================================
+
+@forward 'vuetify/settings' with (
+  // ---- global ------------------------------------------------
+  // Material color-pack classes (text-red-lighten-2, ...) are dead
+  // weight for this theme: colors come from the runtime theme.
+  $color-pack: false,
+
+  // Runtime-switchable font stack; --v-font-body is set per theme.
+  $body-font-family: (var(--v-font-body, ('Inter Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif))),
+
+  // Radius scale: buttons/inputs 6px, cards 8px, no pills.
+  $border-radius-root: 6px,
+  $rounded: (
+    'sm': 4px,
+    'lg': 8px,
+    'xl': 12px,
+  ),
+
+  // ---- typography --------------------------------------------
+  // Kill Material letter-spacing everywhere, tighten sizes,
+  // semibold headings instead of light oversized display type.
+  $typography: (
+    'display-large': ('size': 3rem, 'weight': 700, 'letter-spacing': normal),
+    'display-medium': ('size': 2.5rem, 'weight': 700, 'letter-spacing': normal),
+    'display-small': ('size': 2.25rem, 'weight': 700, 'letter-spacing': normal),
+    'headline-large': ('size': 1.875rem, 'weight': 600, 'letter-spacing': normal),
+    'headline-medium': ('size': 1.5rem, 'weight': 600, 'letter-spacing': normal),
+    'headline-small': ('size': 1.25rem, 'weight': 600, 'letter-spacing': normal),
+    'title-large': ('size': 1.125rem, 'weight': 600, 'letter-spacing': normal),
+    'title-medium': ('size': 1rem, 'weight': 600, 'letter-spacing': normal),
+    'title-small': ('size': 0.875rem, 'weight': 600, 'letter-spacing': normal),
+    'body-large': ('size': 1rem, 'letter-spacing': normal),
+    'body-medium': ('size': 0.875rem, 'letter-spacing': normal),
+    'body-small': ('size': 0.75rem, 'letter-spacing': normal),
+    'label-large': ('size': 0.875rem, 'weight': 500, 'letter-spacing': normal),
+    'label-medium': ('size': 0.75rem, 'weight': 500, 'letter-spacing': normal),
+    'label-small': ('size': 0.6875rem, 'weight': 500, 'letter-spacing': normal),
+  ),
+
+  // ---- buttons -----------------------------------------------
+  $button-height: 32px,
+  $button-text-transform: none,
+  $button-elevation: ('default': 0, 'hover': 0, 'active': 0),
+  $button-icon-font-size: 1.125rem,
+
+  // ---- fields / inputs ---------------------------------------
+  $field-control-height: 36px,
+  $field-font-size: 0.875rem,
+  $field-letter-spacing: normal,
+  $field-outline-opacity: 1,
+  $field-control-padding-start: 12px,
+  $field-control-padding-end: 12px,
+  $field-control-padding-top: 8px,
+  $field-control-padding-bottom: 8px,
+  $field-control-solo-elevation: 0,
+  $input-control-height: 36px,
+  $input-font-size: 0.875rem,
+  $input-details-letter-spacing: normal,
+  $input-details-padding-inline: 2px,
+
+  // ---- cards -------------------------------------------------
+  $card-border-radius: 8px,
+  $card-elevation: 0,
+  $card-hover-elevation: 0
+);
