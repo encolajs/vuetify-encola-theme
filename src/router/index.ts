@@ -35,6 +35,11 @@ export const router = createRouter({
       meta: { layout: 'default', title: 'Form wizard' },
     },
     {
+      path: '/settings',
+      component: () => import('@/pages/settings.vue'),
+      meta: { layout: 'default', title: 'Settings' },
+    },
+    {
       path: '/auth/login',
       component: () => import('@/pages/auth/login.vue'),
       meta: { layout: 'blank', title: 'Sign in' },
