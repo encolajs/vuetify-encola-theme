@@ -15,6 +15,11 @@ export const router = createRouter({
       meta: { layout: 'default', title: 'Kitchen sink' },
     },
     {
+      path: '/invoices',
+      component: () => import('@/pages/invoices.vue'),
+      meta: { layout: 'default', title: 'Invoices' },
+    },
+    {
       path: '/forms',
       component: () => import('@/pages/forms.vue'),
       meta: { layout: 'default', title: 'Form layouts' },
