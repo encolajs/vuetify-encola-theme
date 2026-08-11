@@ -9,5 +9,15 @@ export const router = createRouter({
       component: () => import('@/pages/kitchen-sink.vue'),
       meta: { layout: 'default', title: 'Kitchen sink' },
     },
+    {
+      path: '/auth/login',
+      component: () => import('@/pages/auth/login.vue'),
+      meta: { layout: 'blank', title: 'Sign in' },
+    },
   ],
+})
+
+router.afterEach((to) => {
+  const title = to.meta.title as string | undefined
+  document.title = title ? `${title} — Encola` : 'Encola'
 })
