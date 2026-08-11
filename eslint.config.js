@@ -8,6 +8,8 @@ export default defineConfigWithVueTs(
   {
     rules: {
       'vue/multi-word-component-names': 'off',
+      // VDataTable slot names contain dots: #item.status
+      'vue/valid-v-slot': ['error', { allowModifiers: true }],
     },
   },
 )

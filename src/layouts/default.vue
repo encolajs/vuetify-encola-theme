@@ -2,13 +2,61 @@
 // App shell: sidebar navigation + topbar, Nuxt-UI-style dashboard chrome.
 import { onMounted, ref } from 'vue'
 import { useDisplay, useTheme } from 'vuetify'
-import { CircleUser, LogOut, Moon, Palette, Settings, Sun } from '@lucide/vue'
+import {
+  CircleHelp,
+  CircleUser,
+  CreditCard,
+  FileText,
+  KeyRound,
+  LayoutDashboard,
+  ListTodo,
+  LogIn,
+  LogOut,
+  Moon,
+  Palette,
+  ReceiptText,
+  Settings,
+  Sun,
+  Users,
+} from '@lucide/vue'
 
 const theme = useTheme()
 const display = useDisplay()
 const drawer = ref(!display.mobile.value)
 
-const navItems = [{ title: 'Kitchen sink', icon: Palette, to: '/kitchen-sink' }]
+const navSections = [
+  {
+    items: [{ title: 'Dashboard', icon: LayoutDashboard, to: '/dashboard' }],
+  },
+  {
+    title: 'Management',
+    items: [
+      { title: 'Users', icon: Users, to: '/users' },
+      { title: 'Invoices', icon: ReceiptText, to: '/invoices' },
+    ],
+  },
+  {
+    title: 'Forms',
+    items: [
+      { title: 'Form layouts', icon: FileText, to: '/forms' },
+      { title: 'Form wizard', icon: ListTodo, to: '/form-wizard' },
+    ],
+  },
+  {
+    title: 'Pages',
+    items: [
+      { title: 'Settings', icon: Settings, to: '/settings' },
+      { title: 'Pricing', icon: CreditCard, to: '/pricing' },
+      { title: 'FAQ', icon: CircleHelp, to: '/faq' },
+      { title: 'Sign in', icon: LogIn, to: '/auth/login' },
+      { title: 'Two-factor', icon: KeyRound, to: '/auth/two-factor' },
+    ],
+  },
+  {
+    title: 'Theme',
+    items: [{ title: 'Kitchen sink', icon: Palette, to: '/kitchen-sink' }],
+  },
+]
 
 const THEME_STORAGE_KEY = 'encola-theme'
 
@@ -33,16 +81,21 @@ onMounted(() => {
         </span>
       </div>
       <VList nav>
-        <VListItem
-          v-for="item in navItems"
-          :key="item.to"
-          :to="item.to"
-          :title="item.title"
-        >
-          <template #prepend>
-            <VIcon :icon="item.icon" size="18" />
-          </template>
-        </VListItem>
+        <template v-for="(section, i) in navSections" :key="i">
+          <VListSubheader v-if="section.title">
+            {{ section.title }}
+          </VListSubheader>
+          <VListItem
+            v-for="item in section.items"
+            :key="item.to"
+            :to="item.to"
+            :title="item.title"
+          >
+            <template #prepend>
+              <VIcon :icon="item.icon" size="18" />
+            </template>
+          </VListItem>
+        </template>
       </VList>
     </VNavigationDrawer>
 
