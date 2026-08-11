@@ -19,6 +19,16 @@ export const router = createRouter({
       component: () => import('@/pages/auth/register.vue'),
       meta: { layout: 'blank', title: 'Create an account' },
     },
+    {
+      path: '/auth/forgot-password',
+      component: () => import('@/pages/auth/forgot-password.vue'),
+      meta: { layout: 'blank', title: 'Reset password' },
+    },
+    {
+      path: '/auth/two-factor',
+      component: () => import('@/pages/auth/two-factor.vue'),
+      meta: { layout: 'blank', title: 'Two-factor authentication' },
+    },
   ],
 })
 
