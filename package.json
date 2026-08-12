@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "package": "git archive --format=zip --prefix=vuetify-encola-theme/ -o vuetify-encola-theme.zip HEAD"
   },
   "dependencies": {
     "@fontsource-variable/inter": "^5.2.5",
