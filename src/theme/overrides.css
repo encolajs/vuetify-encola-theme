@@ -478,6 +478,26 @@ a:focus-visible {
   color: rgb(var(--v-theme-error));
 }
 
+/* horizontal layout: label in a fixed-width column, field + messages
+   to the right. Width via --e-form-field-label-width (default 25%). */
+.e-form-field--horizontal {
+  display: grid;
+  grid-template-columns: var(--e-form-field-label-width, 25%) 1fr;
+  column-gap: 1rem;
+  align-items: start;
+}
+
+.e-form-field--horizontal .e-form-field__label {
+  margin-bottom: 0;
+  /* optically center the label against the 2rem control */
+  padding-top: 0.40625rem;
+}
+
+/* keep controls aligned in column 2 even when a row has no label */
+.e-form-field--horizontal .e-form-field__control {
+  grid-column: 2;
+}
+
 /* content width: compact caps the layout at 1200px and pages may narrow
    themselves further; wide lifts every cap */
 .e-content--compact {

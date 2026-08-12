@@ -97,6 +97,33 @@ const timezones = ['UTC', 'Europe/Bucharest', 'Europe/London', 'America/New_York
       </VCardText>
     </VCard>
 
+    <!-- Horizontal: label beside the field -->
+    <VCard>
+      <VCardItem>
+        <VCardTitle>Horizontal layout</VCardTitle>
+        <VCardSubtitle>Labels in a fixed column on the left</VCardSubtitle>
+      </VCardItem>
+      <VCardText>
+        <form class="d-flex flex-column ga-4" @submit.prevent="saved = true">
+          <EFormField horizontal label="Full name" required>
+            <VTextField placeholder="Jane Cooper" autocomplete="name" />
+          </EFormField>
+          <EFormField horizontal label="Email" required help="We'll only use this for receipts.">
+            <VTextField placeholder="you@example.com" type="email" autocomplete="email" />
+          </EFormField>
+          <EFormField horizontal label="Country" label-width="10rem">
+            <VSelect :items="countries" placeholder="Select a country" />
+          </EFormField>
+          <EFormField horizontal>
+            <VCheckbox label="Subscribe to the newsletter" />
+          </EFormField>
+          <div class="d-flex ga-2 justify-end">
+            <VBtn color="primary" type="submit">Save contact</VBtn>
+          </div>
+        </form>
+      </VCardText>
+    </VCard>
+
     <!-- Horizontal sections -->
     <VCard>
       <VCardItem>
