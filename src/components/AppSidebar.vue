@@ -142,16 +142,24 @@ const userMenu = [
 
     <!-- above main menu: environment picker -->
     <div class="e-sidebar__top">
-      <VSelect
-        v-if="!rail"
-        v-model="environment"
-        :items="environments"
-        :menu-icon="ChevronsUpDown"
-        aria-label="Environment"
-      />
-      <VMenu v-else location="end">
+      <VMenu :location="rail ? 'end' : 'bottom'">
         <template #activator="{ props: menuProps }">
+          <VListItem
+            v-if="!rail"
+            class="e-sidebar__control"
+            :title="environment"
+            aria-label="Environment"
+            v-bind="menuProps"
+          >
+            <template #prepend>
+              <VIcon :icon="Server" size="18" />
+            </template>
+            <template #append>
+              <VIcon :icon="ChevronsUpDown" size="14" style="opacity: 0.5" />
+            </template>
+          </VListItem>
           <EBtnGhost
+            v-else
             v-tooltip="{ text: environment, location: 'end' }"
             icon
             block
@@ -273,7 +281,7 @@ const userMenu = [
           <template #activator="{ props: menuProps }">
             <VListItem
               v-tooltip="{ text: user.name, location: 'end', disabled: !rail }"
-              class="e-sidebar__user"
+              class="e-sidebar__control"
               :title="user.name"
               :subtitle="user.email"
               aria-label="User menu"

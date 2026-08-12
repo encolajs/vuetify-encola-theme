@@ -179,10 +179,12 @@ a:focus-visible {
   padding-inline-start: 1.625rem;
 }
 
-/* user menu activator reads as a button: hairline ring on the muted panel */
-.e-sidebar__user.v-list-item {
+/* sidebar menu activators (environment, user) read as buttons:
+   hairline ring + page surface on the muted panel */
+.e-sidebar__control.v-list-item {
   border: 1px solid rgba(var(--v-border-color), var(--v-border-opacity));
   background: rgb(var(--v-theme-surface));
+  padding-inline: 0.5rem;
 }
 
 /* rail mode: center the logo mark, drop section headers */
