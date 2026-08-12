@@ -74,6 +74,12 @@
   $input-details-letter-spacing: normal,
   $input-details-padding-inline: 0.125rem,
 
+  // ---- dividers ----------------------------------------------
+  // Material fades a text-colored divider to 12%; this theme uses the
+  // same hairline color as every other border, at full opacity.
+  $divider-border-color: rgba(var(--v-border-color), var(--v-border-opacity)),
+  $divider-opacity: 1,
+
   // ---- cards -------------------------------------------------
   $card-border-radius: 0.5rem,
   $card-elevation: 0,
