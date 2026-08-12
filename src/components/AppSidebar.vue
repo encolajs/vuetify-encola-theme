@@ -6,10 +6,12 @@ import { ref } from 'vue'
 import type { FunctionalComponent } from 'vue'
 import { useRoute } from 'vue-router'
 import {
+  BellRing,
   Check,
   ChevronsUpDown,
   CircleHelp,
   CircleUser,
+  Compass,
   CreditCard,
   FileText,
   FolderKanban,
@@ -24,6 +26,9 @@ import {
   ReceiptText,
   Server,
   Settings,
+  Shapes,
+  SquareStack,
+  TextCursorInput,
   Users,
 } from '@lucide/vue'
 import { useSidebar } from '@/composables/useSidebar'
@@ -68,6 +73,16 @@ const navSections: NavSection[] = [
     items: [
       { title: 'Form layouts', icon: FileText, to: '/forms' },
       { title: 'Form wizard', icon: ListTodo, to: '/form-wizard' },
+    ],
+  },
+  {
+    title: 'UI',
+    icon: Shapes,
+    items: [
+      { title: 'Form fields', icon: TextCursorInput, to: '/ui/form-fields' },
+      { title: 'Navigation', icon: Compass, to: '/ui/navigation' },
+      { title: 'Overlays', icon: SquareStack, to: '/ui/overlays' },
+      { title: 'Feedback', icon: BellRing, to: '/ui/feedback' },
     ],
   },
   {

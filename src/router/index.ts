@@ -35,6 +35,26 @@ export const router = createRouter({
       meta: { layout: 'default', title: 'Form wizard' },
     },
     {
+      path: '/ui/form-fields',
+      component: () => import('@/pages/ui/form-fields.vue'),
+      meta: { layout: 'default', title: 'Form fields' },
+    },
+    {
+      path: '/ui/navigation',
+      component: () => import('@/pages/ui/navigation.vue'),
+      meta: { layout: 'default', title: 'Navigation' },
+    },
+    {
+      path: '/ui/overlays',
+      component: () => import('@/pages/ui/overlays.vue'),
+      meta: { layout: 'default', title: 'Overlays' },
+    },
+    {
+      path: '/ui/feedback',
+      component: () => import('@/pages/ui/feedback.vue'),
+      meta: { layout: 'default', title: 'Feedback' },
+    },
+    {
       path: '/settings',
       component: () => import('@/pages/settings.vue'),
       meta: { layout: 'default', title: 'Settings' },
