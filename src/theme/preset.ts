@@ -150,7 +150,10 @@ export const encolaOptions: VuetifyOptions = {
     VBadge: { color: 'primary' },
     VTabs: { color: 'primary', density: 'comfortable' },
     VList: { density: 'compact' },
-    VMenu: { offset: 6 },
+    // stickToTarget keeps menus left-aligned with their activator even
+    // near the viewport edge (e.g. in the sidebar), where the default
+    // 12px viewportMargin clamp would nudge them inward.
+    VMenu: { offset: 6, stickToTarget: true },
     VTooltip: { location: 'top' },
     VExpansionPanel: { elevation: 0 },
 
