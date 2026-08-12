@@ -1,6 +1,6 @@
 // =============================================================
 // Layers 2–3 — createVuetify options: defaults, aliases, themes.
-// Colors follow the Tailwind slate/green scales (flat, no Material).
+// Colors follow the Tailwind slate/indigo scales (flat, no Material).
 // =============================================================
 import type { VuetifyOptions } from 'vuetify'
 import type { ThemeDefinition } from 'vuetify'
@@ -43,9 +43,9 @@ export const light: ThemeDefinition = {
     'on-surface-variant': '#475569', // slate-600
     ring: '#cbd5e1', // slate-300 — input/outline hairlines
 
-    primary: '#22c55e', // green-500
+    primary: '#6366f1', // indigo-500 — oklch(0.585 0.233 277.12)
     'on-primary': '#ffffff',
-    'primary-hover': '#16a34a', // green-600
+    'primary-hover': '#4f46e5', // indigo-600
     secondary: '#64748b', // slate-500
     'on-secondary': '#ffffff',
     neutral: '#0f172a', // slate-900 — "inverted" solid buttons
@@ -82,9 +82,9 @@ export const dark: ThemeDefinition = {
     'on-surface-variant': '#cbd5e1',
     ring: '#334155',
 
-    primary: '#4ade80', // green-400
-    'on-primary': '#052e16', // green-950
-    'primary-hover': '#22c55e',
+    primary: '#818cf8', // indigo-400
+    'on-primary': '#1e1b4b', // indigo-950
+    'primary-hover': '#6366f1',
     secondary: '#94a3b8', // slate-400
     'on-secondary': '#0f172a',
     neutral: '#ffffff',

@@ -23,7 +23,7 @@ All restyling flows through exactly four places. Never restyle anywhere else.
 ## Design language (target: Nuxt UI v4 look)
 
 - Flat and compact. **No box-shadows** — 1px neutral rings + surface background steps convey depth.
-- Primary: green-500 (green-400 in dark). Neutrals: slate. Body text neutral-700/200, never pure black.
+- Primary: indigo-500 `#6366f1` = oklch(0.585 0.233 277.12) (indigo-400 in dark). Neutrals: slate. Body text neutral-700/200, never pure black.
 - Radii: buttons/inputs ~4px, cards ~8px. Buttons and inputs ~32px tall.
 - Type: default text 14px, text-sm `font-medium` buttons, no uppercase, zero letter-spacing.
 - Focus: `focus-visible` only — primary ring + translucent primary outline. Hover: color/opacity shifts with `transition-colors`.
