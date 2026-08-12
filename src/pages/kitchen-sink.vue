@@ -200,7 +200,7 @@ const breadcrumbs = [
             </VCardText>
             <VCardActions>
               <VBtn variant="text">Cancel</VBtn>
-              <VBtn color="primary">Save</VBtn>
+              <VBtn variant="flat" color="primary">Save</VBtn>
             </VCardActions>
           </VCard>
         </VCol>
@@ -308,7 +308,7 @@ const breadcrumbs = [
             <VCardActions>
               <VSpacer />
               <VBtn variant="text" @click="dialog = false">Cancel</VBtn>
-              <VBtn color="error" @click="dialog = false">Delete</VBtn>
+              <VBtn variant="flat" color="error" @click="dialog = false">Delete</VBtn>
             </VCardActions>
           </VCard>
         </VDialog>

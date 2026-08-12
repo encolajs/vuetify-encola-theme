@@ -40,7 +40,7 @@ const sheet = ref(false)
           <VCardActions>
             <VSpacer />
             <VBtn variant="text" @click="confirmDialog = false">Cancel</VBtn>
-            <VBtn color="primary" @click="confirmDialog = false">Archive</VBtn>
+            <VBtn variant="flat" color="primary" @click="confirmDialog = false">Archive</VBtn>
           </VCardActions>
         </VCard>
       </VDialog>
@@ -64,7 +64,7 @@ const sheet = ref(false)
           <VCardActions>
             <VSpacer />
             <VBtn variant="text" @click="formDialog = false">Cancel</VBtn>
-            <VBtn color="primary" @click="formDialog = false">Create</VBtn>
+            <VBtn variant="flat" color="primary" @click="formDialog = false">Create</VBtn>
           </VCardActions>
         </VCard>
       </VDialog>

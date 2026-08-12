@@ -176,7 +176,7 @@ const activeCount = computed(() => users.value.filter((u) => u.active).length)
         <VCardActions>
           <VSpacer />
           <VBtn variant="text" @click="dialog = false">Cancel</VBtn>
-          <VBtn color="primary" @click="save">{{ editing ? 'Save changes' : 'Add user' }}</VBtn>
+          <VBtn variant="flat" color="primary" @click="save">{{ editing ? 'Save changes' : 'Add user' }}</VBtn>
         </VCardActions>
       </VCard>
     </VDialog>
@@ -194,7 +194,7 @@ const activeCount = computed(() => users.value.filter((u) => u.active).length)
         <VCardActions>
           <VSpacer />
           <VBtn variant="text" @click="deleteDialog = false">Cancel</VBtn>
-          <VBtn color="error" @click="remove">Remove user</VBtn>
+          <VBtn variant="flat" color="error" @click="remove">Remove user</VBtn>
         </VCardActions>
       </VCard>
     </VDialog>
