@@ -125,6 +125,15 @@ export const encolaOptions: VuetifyOptions = {
     VCombobox: { variant: 'outlined', hideDetails: 'auto' },
     VAutocomplete: { variant: 'outlined', hideDetails: 'auto' },
     VFileInput: { variant: 'outlined', hideDetails: 'auto' },
+    VNumberInput: { variant: 'outlined', hideDetails: 'auto' },
+    VDateInput: {
+      variant: 'outlined',
+      hideDetails: 'auto',
+      prependIcon: '',
+      prependInnerIcon: '$calendar',
+    },
+    VColorInput: { variant: 'outlined', hideDetails: 'auto' },
+    VOtpInput: { variant: 'outlined' },
 
     VCheckbox: { color: 'primary', hideDetails: 'auto' },
     VCheckboxBtn: { color: 'primary' },
