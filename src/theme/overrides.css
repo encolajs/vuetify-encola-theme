@@ -453,6 +453,20 @@ a:focus-visible {
   border-radius: 4px;
 }
 
+/* rem list item heights ($list-item-min-height is px-locked density
+   arithmetic in SASS). Multi-line items keep their taller minimums. */
+.v-list-item--density-default:not(.v-list-item--two-line):not(.v-list-item--three-line) {
+  min-height: 2rem;
+}
+
+.v-list-item--density-comfortable:not(.v-list-item--two-line):not(.v-list-item--three-line) {
+  min-height: 1.5rem;
+}
+
+.v-list-item--density-compact:not(.v-list-item--two-line):not(.v-list-item--three-line) {
+  min-height: 1.2rem;
+}
+
 /* ---- tabs --------------------------------------------------- */
 /* the tab bar carries its own bottom hairline; the active-tab slider
    sits on top of it. No VDivider needed after VTabs. */
