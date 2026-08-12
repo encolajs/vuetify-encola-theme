@@ -90,7 +90,7 @@ const afterNotify = ref(true)
             <VCardActions>
               <VSpacer />
               <VBtn variant="text">Cancel</VBtn>
-              <VBtn color="primary">Sign up</VBtn>
+              <VBtn variant="flat" color="primary">Sign up</VBtn>
             </VCardActions>
           </VCard>
 
