@@ -73,7 +73,7 @@ const navSections: NavSection[] = [
   {
     title: 'Pages',
     icon: Layers,
-    collapsed: false,
+    collapsed: true,
     items: [
       { title: 'Settings', icon: Settings, to: '/settings' },
       { title: 'Pricing', icon: CreditCard, to: '/pricing' },
@@ -148,7 +148,7 @@ const userMenu = [
         :items="environments"
         aria-label="Environment"
       />
-      <VMenu v-else>
+      <VMenu v-else location="end">
         <template #activator="{ props: menuProps }">
           <EBtnGhost
             v-tooltip="{ text: environment, location: 'end' }"
