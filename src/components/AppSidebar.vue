@@ -146,6 +146,7 @@ const userMenu = [
         v-if="!rail"
         v-model="environment"
         :items="environments"
+        :menu-icon="ChevronsUpDown"
         aria-label="Environment"
       />
       <VMenu v-else location="end">
