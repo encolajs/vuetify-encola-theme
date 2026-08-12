@@ -73,7 +73,7 @@ const navSections: NavSection[] = [
   {
     title: 'Pages',
     icon: Layers,
-    collapsed: true,
+    collapsed: false,
     items: [
       { title: 'Settings', icon: Settings, to: '/settings' },
       { title: 'Pricing', icon: CreditCard, to: '/pricing' },
@@ -85,10 +85,19 @@ const navSections: NavSection[] = [
   { title: 'Kitchen sink', icon: Palette, to: '/kitchen-sink' },
 ]
 
-// groups open by default unless marked collapsed
-const opened = ref(
-  navSections.filter((s) => s.items && !s.collapsed).map((s) => s.title),
+// groups open by default unless marked collapsed; explicit state instead
+// of VList's opened model so the flag always wins on first render and the
+// state survives rail toggles
+const openSections = ref(
+  new Set(navSections.filter((s) => s.items && !s.collapsed).map((s) => s.title)),
 )
+
+function toggleSection(title: string) {
+  const next = new Set(openSections.value)
+  if (next.has(title)) next.delete(title)
+  else next.add(title)
+  openSections.value = next
+}
 
 function isSectionActive(section: NavSection) {
   return section.items?.some((item) => route.path.startsWith(item.to)) ?? false
@@ -168,7 +177,7 @@ const userMenu = [
 
     <!-- main menu: the only scrollable region -->
     <div class="e-sidebar__menu">
-      <VList v-model:opened="opened" nav>
+      <VList nav>
         <template v-for="section in navSections" :key="section.title">
           <!-- leaf link -->
           <VListItem
@@ -183,25 +192,36 @@ const userMenu = [
           </VListItem>
 
           <!-- expanded: collapsible group -->
-          <VListGroup v-else-if="!rail" :value="section.title">
-            <template #activator="{ props: groupProps }">
-              <VListItem v-bind="groupProps" :title="section.title">
-                <template #prepend>
-                  <VIcon :icon="section.icon" size="18" />
-                </template>
-              </VListItem>
-            </template>
+          <template v-else-if="!rail">
             <VListItem
-              v-for="item in section.items"
-              :key="item.to"
-              :to="item.to"
-              :title="item.title"
+              :title="section.title"
+              :aria-expanded="openSections.has(section.title)"
+              @click="toggleSection(section.title)"
             >
               <template #prepend>
-                <VIcon :icon="item.icon" size="18" />
+                <VIcon :icon="section.icon" size="18" />
+              </template>
+              <template #append>
+                <VIcon
+                  :icon="openSections.has(section.title) ? '$collapse' : '$expand'"
+                  size="16"
+                  style="opacity: 0.6"
+                />
               </template>
             </VListItem>
-          </VListGroup>
+            <div v-show="openSections.has(section.title)" class="e-sidebar__group">
+              <VListItem
+                v-for="item in section.items"
+                :key="item.to"
+                :to="item.to"
+                :title="item.title"
+              >
+                <template #prepend>
+                  <VIcon :icon="item.icon" size="18" />
+                </template>
+              </VListItem>
+            </div>
+          </template>
 
           <!-- rail: section icon opens children as a flyout menu -->
           <VMenu v-else location="end">

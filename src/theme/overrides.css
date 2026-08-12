@@ -157,8 +157,8 @@ a:focus-visible {
 
 /* group children indent to sit under the section label:
    18px section icon + 0.5rem prepend gap */
-.e-sidebar {
-  --v-list-group-prepend: 1.625rem;
+.e-sidebar__group {
+  padding-inline-start: 1.625rem;
 }
 
 /* rail mode: center the logo mark, drop section headers */
