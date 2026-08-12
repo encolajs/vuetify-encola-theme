@@ -114,6 +114,57 @@ a:focus-visible {
   border-inline-start: 1px solid rgba(var(--v-border-color), var(--v-border-opacity));
 }
 
+/* app sidebar: logo + top section pinned, only the main menu scrolls,
+   bottom section pinned. Structure lives in AppSidebar.vue. */
+.e-sidebar .v-navigation-drawer__content {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.e-sidebar__logo {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0.5rem;
+  height: 3.5rem;
+  padding-inline: 1rem;
+  text-decoration: none;
+  color: rgb(var(--v-theme-on-surface));
+}
+
+.e-sidebar__wordmark {
+  font-size: 1rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.e-sidebar__top {
+  flex: 0 0 auto;
+  padding: 0.25rem 0.5rem 0.75rem;
+}
+
+.e-sidebar__menu {
+  flex: 1 1 0;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.e-sidebar__bottom {
+  flex: 0 0 auto;
+  border-top: 1px solid rgba(var(--v-border-color), var(--v-border-opacity));
+}
+
+/* rail mode: center the logo mark, drop section headers */
+.v-navigation-drawer--rail .e-sidebar__logo {
+  justify-content: center;
+  padding-inline: 0;
+}
+
+.v-navigation-drawer--rail .v-list-subheader {
+  display: none;
+}
+
 /* ---- buttons ------------------------------------------------ */
 .v-btn {
   letter-spacing: 0;
