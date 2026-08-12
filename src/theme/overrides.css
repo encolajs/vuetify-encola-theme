@@ -62,27 +62,38 @@ a:focus-visible {
   box-shadow: inset 0 0 0 1px rgba(var(--v-border-color), var(--v-border-opacity));
 }
 
-/* floating surfaces (menus, selects, dialogs, tooltips) */
-.v-menu > .v-overlay__content,
-.v-overlay__content > .v-list {
-  border-radius: 8px;
+/* floating surfaces (menus, selects, dialogs, tooltips).
+   A real border, not an inset ring: VSelect and friends wrap their list
+   in an opaque elevated VSheet that would paint over an inset shadow. */
+.v-menu > .v-overlay__content {
+  border-radius: 0.5rem;
+  border: 1px solid rgba(var(--v-border-color), var(--v-border-opacity));
   background: rgb(var(--v-theme-surface));
-  box-shadow: inset 0 0 0 1px rgba(var(--v-border-color), var(--v-border-opacity));
+  box-shadow: none;
+  overflow: hidden;
+}
+
+.v-menu > .v-overlay__content > .v-sheet,
+.v-menu > .v-overlay__content > .v-list,
+.v-menu > .v-overlay__content > .v-card {
+  background: rgb(var(--v-theme-surface));
+  box-shadow: none;
 }
 
 .v-dialog > .v-overlay__content > .v-card {
-  border-radius: 8px;
-  box-shadow: inset 0 0 0 1px rgba(var(--v-border-color), var(--v-border-opacity));
+  border-radius: 0.5rem;
+  border: 1px solid rgba(var(--v-border-color), var(--v-border-opacity));
+  box-shadow: none;
 }
 
 .v-tooltip > .v-overlay__content {
   background: rgb(var(--v-theme-surface));
   color: rgb(var(--v-theme-on-surface));
-  box-shadow: inset 0 0 0 1px rgba(var(--v-border-color), var(--v-border-opacity));
-  border-radius: 4px;
+  border: 1px solid rgba(var(--v-border-color), var(--v-border-opacity));
+  border-radius: 0.25rem;
   font-size: 0.75rem;
   font-weight: 500;
-  padding: 4px 8px;
+  padding: 0.25rem 0.5rem;
 }
 
 /* ---- app shell ---------------------------------------------- */
