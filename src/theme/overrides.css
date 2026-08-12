@@ -460,6 +460,41 @@ a:focus-visible {
   border-bottom: 1px solid rgba(var(--v-border-color), var(--v-border-opacity));
 }
 
+/* ---- pagination ---------------------------------------------- */
+/* Material marks the active page with a currentColor overlay at
+   border-opacity — solid at this theme's opacity 1, hiding the number.
+   Use a real neutral fill with readable text instead. */
+.v-pagination__item--is-active .v-btn__overlay {
+  opacity: 0;
+}
+
+.v-pagination__item--is-active .v-btn {
+  background-color: rgb(var(--v-theme-neutral));
+  color: rgb(var(--v-theme-on-neutral));
+}
+
+/* compact 2rem page buttons instead of Material's 44px */
+.v-pagination .v-btn {
+  min-width: 2rem;
+  padding-inline: 0.25rem;
+  --v-btn-height: 1.25rem;
+}
+
+.v-pagination__first .v-btn,
+.v-pagination__prev .v-btn,
+.v-pagination__next .v-btn,
+.v-pagination__last .v-btn {
+  width: 2rem;
+}
+
+.v-pagination__item,
+.v-pagination__first,
+.v-pagination__prev,
+.v-pagination__next,
+.v-pagination__last {
+  margin: 0.125rem;
+}
+
 /* ---- tables ------------------------------------------------- */
 .v-table {
   background: transparent;
