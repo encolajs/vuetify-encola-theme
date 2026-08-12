@@ -155,6 +155,12 @@ a:focus-visible {
   border-top: 1px solid rgba(var(--v-border-color), var(--v-border-opacity));
 }
 
+/* group children indent to sit under the section label:
+   18px section icon + 0.5rem prepend gap */
+.e-sidebar {
+  --v-list-group-prepend: 1.625rem;
+}
+
 /* rail mode: center the logo mark, drop section headers */
 .v-navigation-drawer--rail .e-sidebar__logo {
   justify-content: center;

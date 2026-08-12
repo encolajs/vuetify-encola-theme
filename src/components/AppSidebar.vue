@@ -3,6 +3,8 @@
 // help + user menu (sticky bottom). Collapses to an icon rail on desktop
 // (state via useSidebar) and becomes a temporary drawer on mobile.
 import { ref } from 'vue'
+import type { FunctionalComponent } from 'vue'
+import { useRoute } from 'vue-router'
 import {
   Check,
   ChevronsUpDown,
@@ -10,11 +12,14 @@ import {
   CircleUser,
   CreditCard,
   FileText,
+  FolderKanban,
   KeyRound,
+  Layers,
   LayoutDashboard,
   ListTodo,
   LogIn,
   LogOut,
+  NotebookPen,
   Palette,
   ReceiptText,
   Server,
@@ -24,6 +29,7 @@ import {
 import { useSidebar } from '@/composables/useSidebar'
 
 const { isMobile, mobileOpen, rail } = useSidebar()
+const route = useRoute()
 
 const environments = [
   'Test environment',
@@ -32,12 +38,25 @@ const environments = [
 ]
 const environment = ref(environments[0])
 
-const navSections = [
-  {
-    items: [{ title: 'Dashboard', icon: LayoutDashboard, to: '/dashboard' }],
-  },
+interface NavItem {
+  title: string
+  icon: FunctionalComponent
+  to: string
+}
+
+interface NavSection {
+  title: string
+  icon: FunctionalComponent
+  to?: string // leaf link
+  items?: NavItem[] // group with children
+  collapsed?: boolean // children hidden by default
+}
+
+const navSections: NavSection[] = [
+  { title: 'Dashboard', icon: LayoutDashboard, to: '/dashboard' },
   {
     title: 'Management',
+    icon: FolderKanban,
     items: [
       { title: 'Users', icon: Users, to: '/users' },
       { title: 'Invoices', icon: ReceiptText, to: '/invoices' },
@@ -45,6 +64,7 @@ const navSections = [
   },
   {
     title: 'Forms',
+    icon: NotebookPen,
     items: [
       { title: 'Form layouts', icon: FileText, to: '/forms' },
       { title: 'Form wizard', icon: ListTodo, to: '/form-wizard' },
@@ -52,6 +72,8 @@ const navSections = [
   },
   {
     title: 'Pages',
+    icon: Layers,
+    collapsed: true,
     items: [
       { title: 'Settings', icon: Settings, to: '/settings' },
       { title: 'Pricing', icon: CreditCard, to: '/pricing' },
@@ -60,11 +82,17 @@ const navSections = [
       { title: 'Two-factor', icon: KeyRound, to: '/auth/two-factor' },
     ],
   },
-  {
-    title: 'Theme',
-    items: [{ title: 'Kitchen sink', icon: Palette, to: '/kitchen-sink' }],
-  },
+  { title: 'Kitchen sink', icon: Palette, to: '/kitchen-sink' },
 ]
+
+// groups open by default unless marked collapsed
+const opened = ref(
+  navSections.filter((s) => s.items && !s.collapsed).map((s) => s.title),
+)
+
+function isSectionActive(section: NavSection) {
+  return section.items?.some((item) => route.path.startsWith(item.to)) ?? false
+}
 
 const user = { name: 'Florin Miu', email: 'florin@example.com', initials: 'FM' }
 
@@ -140,22 +168,69 @@ const userMenu = [
 
     <!-- main menu: the only scrollable region -->
     <div class="e-sidebar__menu">
-      <VList nav>
-        <template v-for="(section, i) in navSections" :key="i">
-          <VListSubheader v-if="section.title">
-            {{ section.title }}
-          </VListSubheader>
+      <VList v-model:opened="opened" nav>
+        <template v-for="section in navSections" :key="section.title">
+          <!-- leaf link -->
           <VListItem
-            v-for="item in section.items"
-            :key="item.to"
-            v-tooltip="{ text: item.title, location: 'end', disabled: !rail }"
-            :to="item.to"
-            :title="item.title"
+            v-if="section.to"
+            v-tooltip="{ text: section.title, location: 'end', disabled: !rail }"
+            :to="section.to"
+            :title="section.title"
           >
             <template #prepend>
-              <VIcon :icon="item.icon" size="18" />
+              <VIcon :icon="section.icon" size="18" />
             </template>
           </VListItem>
+
+          <!-- expanded: collapsible group -->
+          <VListGroup v-else-if="!rail" :value="section.title">
+            <template #activator="{ props: groupProps }">
+              <VListItem v-bind="groupProps" :title="section.title">
+                <template #prepend>
+                  <VIcon :icon="section.icon" size="18" />
+                </template>
+              </VListItem>
+            </template>
+            <VListItem
+              v-for="item in section.items"
+              :key="item.to"
+              :to="item.to"
+              :title="item.title"
+            >
+              <template #prepend>
+                <VIcon :icon="item.icon" size="18" />
+              </template>
+            </VListItem>
+          </VListGroup>
+
+          <!-- rail: section icon opens children as a flyout menu -->
+          <VMenu v-else location="end">
+            <template #activator="{ props: menuProps }">
+              <VListItem
+                v-tooltip="{ text: section.title, location: 'end' }"
+                :title="section.title"
+                :active="isSectionActive(section)"
+                v-bind="menuProps"
+              >
+                <template #prepend>
+                  <VIcon :icon="section.icon" size="18" />
+                </template>
+              </VListItem>
+            </template>
+            <VList min-width="200">
+              <VListSubheader>{{ section.title }}</VListSubheader>
+              <VListItem
+                v-for="item in section.items"
+                :key="item.to"
+                :to="item.to"
+                :title="item.title"
+              >
+                <template #prepend>
+                  <VIcon :icon="item.icon" size="16" />
+                </template>
+              </VListItem>
+            </VList>
+          </VMenu>
         </template>
       </VList>
     </div>
