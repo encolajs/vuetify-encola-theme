@@ -24,7 +24,7 @@ All restyling flows through exactly four places. Never restyle anywhere else.
 
 - Flat and compact. **No box-shadows** — 1px neutral rings + surface background steps convey depth.
 - Primary: green-500 (green-400 in dark). Neutrals: slate. Body text neutral-700/200, never pure black.
-- Radii: buttons/inputs ~4px, cards ~8px. Buttons ~32px, inputs ~36px tall.
+- Radii: buttons/inputs ~4px, cards ~8px. Buttons and inputs ~32px tall.
 - Type: default text 14px, text-sm `font-medium` buttons, no uppercase, zero letter-spacing.
 - Focus: `focus-visible` only — primary ring + translucent primary outline. Hover: color/opacity shifts with `transition-colors`.
 - Dark mode is first-class: every page/component must be checked in both themes.

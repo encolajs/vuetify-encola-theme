@@ -50,16 +50,19 @@
   $button-icon-font-size: 1.125rem,
 
   // ---- fields / inputs ---------------------------------------
-  $field-control-height: 36px,
+  // 32px tall, same as buttons (Nuxt UI md). The input's min-height is
+  // max(--v-input-control-height, 1.3125rem line + padding-top + padding-bottom),
+  // so both arms must resolve to 32px: 21px + 5.5px + 5.5px = 32px.
+  $field-control-height: 32px,
   $field-font-size: 0.875rem,
   $field-letter-spacing: normal,
   $field-outline-opacity: 1,
   $field-control-padding-start: 10px,
   $field-control-padding-end: 10px,
-  $field-control-padding-top: 4px,
-  $field-control-padding-bottom: 4px,
+  $field-control-padding-top: 5.5px,
+  $field-control-padding-bottom: 5.5px,
   $field-control-solo-elevation: 0,
-  $input-control-height: 36px,
+  $input-control-height: 32px,
   $input-font-size: 0.875rem,
   $input-details-letter-spacing: normal,
   $input-details-padding-inline: 2px,
