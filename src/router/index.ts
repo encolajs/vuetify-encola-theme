@@ -15,6 +15,11 @@ export const router = createRouter({
       meta: { layout: 'default', title: 'Kitchen sink' },
     },
     {
+      path: '/comparison',
+      component: () => import('@/pages/comparison.vue'),
+      meta: { layout: 'default', title: 'Before / after' },
+    },
+    {
       path: '/users',
       component: () => import('@/pages/users.vue'),
       meta: { layout: 'default', title: 'Users' },

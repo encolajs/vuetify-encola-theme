@@ -15,6 +15,7 @@ import {
   CreditCard,
   FileText,
   FolderKanban,
+  GitCompare,
   KeyRound,
   Layers,
   LayoutDashboard,
@@ -98,6 +99,7 @@ const navSections: NavSection[] = [
     ],
   },
   { title: 'Kitchen sink', icon: Palette, to: '/kitchen-sink' },
+  { title: 'Before / after', icon: GitCompare, to: '/comparison' },
 ]
 
 // groups open by default unless marked collapsed; explicit state instead
