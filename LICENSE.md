@@ -9,9 +9,14 @@ Copyright (c) 2026 [SELLER NAME / COMPANY]
 ## Grant
 
 Purchasing a license grants you, the purchaser, a non-exclusive,
-non-transferable right to use the Encola theme (the "Software") to create
-**one End Product** (a website or application) for yourself or for one
-client. Each additional End Product requires an additional license.
+non-transferable, lifetime right to use the Encola theme (the "Software")
+to create **one End Product** (a website or application) for yourself or
+for one client. Each additional End Product requires an additional
+license.
+
+The End Product may not be a Software-as-a-Service offering — that is, a
+product whose users pay for, or subscribe to, access to the End Product
+itself. For SaaS licensing, contact [SELLER CONTACT].
 
 You may:
 
@@ -46,5 +51,5 @@ liability arising from the use of the Software.
 
 ## Support & updates
 
-A license includes access to updates and bug fixes for [PERIOD, e.g. 12
-months] from the date of purchase.
+A license includes lifetime access to updates and bug fixes for the
+Software.

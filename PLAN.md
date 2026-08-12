@@ -85,7 +85,7 @@ Scaffold the Vite project; build `settings.scss`, `preset.ts`, `overrides.css`, 
 Layouts (app shell with Nuxt-UI-style sidebar/topbar, blank layout), then pages in the order above — auth and forms first (highest scrutiny for the "not Material" claim), dashboard/tables next (long tail: VDataTable/VDatePicker internals need individual CSS attention).
 
 ### Phase 3 — Packaging & distribution
-Docs (install, conventions, changing primary/neutral colors), demo deployment, zip packaging, license text, decide free-tier vs. paid split (store themes model: free lite + paid full).
+Docs (install, conventions, changing primary/neutral colors), demo deployment, zip packaging, license text. **Decided:** paid only, $49 / lifetime updates / per non-SaaS End Product (SaaS licensing separate).
 
 Total estimate: 3–6 weeks to a sellable v1.
 
