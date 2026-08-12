@@ -5,3 +5,4 @@ dist/
 *.log
 tsconfig.tsbuildinfo
 vuetify-encola-theme.zip
+.idea/
