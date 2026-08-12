@@ -128,6 +128,18 @@ a:focus-visible {
   overflow: hidden;
 }
 
+/* lists paint the surface color by default; inside the sidebar they must
+   show the drawer's muted background instead */
+.e-sidebar .v-list {
+  background: transparent;
+}
+
+/* fields sit on the muted panel, so give them the page surface for
+   contrast (white input on a gray sidebar, Nuxt UI style) */
+.e-sidebar .v-field {
+  background: rgb(var(--v-theme-surface));
+}
+
 .e-sidebar__logo {
   display: flex;
   flex: 0 0 auto;
