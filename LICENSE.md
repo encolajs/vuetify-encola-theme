@@ -10,10 +10,17 @@ to create **one End Product** (a website or application) for yourself or
 for one client. Each additional End Product requires an additional
 license.
 
-This standard license does not cover Software-as-a-Service End Products —
-that is, products whose users pay for, or subscribe to, access to the End
-Product itself. SaaS End Products require the **SaaS License** (USD 399
-per End Product), which otherwise carries the same terms as this license.
+This standard license does not cover Software-as-a-Service End Products.
+An End Product is SaaS when its users pay for, or subscribe to, access to
+the End Product itself — for example monthly or annual plans, per-seat
+pricing, freemium products with paid tiers, or usage-based billing.
+
+Not SaaS (covered by this standard license): marketing and content sites,
+internal company tools, admin dashboards, client projects where end users
+are not charged for access, and free products with no paid tier.
+
+SaaS End Products require the **SaaS License** (USD 399 per End Product),
+which otherwise carries the same terms as this license.
 
 You may:
 
