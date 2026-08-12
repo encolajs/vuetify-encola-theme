@@ -111,7 +111,12 @@ const timezones = ['UTC', 'Europe/Bucharest', 'Europe/London', 'America/New_York
           <EFormField horizontal label="Email" required help="We'll only use this for receipts.">
             <VTextField placeholder="you@example.com" type="email" autocomplete="email" />
           </EFormField>
-          <EFormField horizontal label="Country" label-width="10rem">
+          <EFormField
+            horizontal
+            label="Country"
+            label-width="10rem"
+            help="Custom label width via `label-width=&quot;10rem&quot;`"
+          >
             <VSelect :items="countries" placeholder="Select a country" />
           </EFormField>
           <EFormField horizontal>
