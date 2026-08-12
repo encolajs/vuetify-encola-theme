@@ -30,7 +30,7 @@ const faqs = [
 </script>
 
 <template>
-  <div class="d-flex flex-column ga-8 mx-auto" style="max-width: 720px">
+  <div class="d-flex flex-column ga-8 mx-auto e-page-narrow--sm">
     <div class="text-center">
       <h1 class="text-headline-medium">Frequently asked questions</h1>
       <p class="text-body-medium mt-2" style="opacity: 0.7">

@@ -24,7 +24,7 @@ function next() {
 </script>
 
 <template>
-  <div class="d-flex flex-column ga-6" style="max-width: 720px">
+  <div class="d-flex flex-column ga-6 e-page-narrow--sm">
     <div>
       <h1 class="text-headline-medium">Form wizard</h1>
       <p class="text-body-medium mt-1" style="opacity: 0.7">

@@ -78,6 +78,7 @@ const widthSnippet = computed(
     v-model="open"
     location="end"
     temporary
+    :scrim="false"
     width="360"
     class="e-customizer"
   >

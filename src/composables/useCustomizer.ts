@@ -2,7 +2,8 @@
 // (colors/variables are reactive) and injects a small unlayered <style> tag
 // for the radius, which is compiled statically in settings.scss. The drawer
 // shows how to make each change permanent in the theme source files.
-import { computed, ref, watch } from 'vue'
+import { computed, effectScope, ref, watch } from 'vue'
+import type { EffectScope } from 'vue'
 import { useTheme } from 'vuetify'
 
 // Tailwind neutral scales (v4 values, converted from oklch)
@@ -69,15 +70,24 @@ const surface = ref<PaletteName>(DEFAULTS.surface)
 const radius = ref(DEFAULTS.radius)
 const contentWidth = ref<typeof DEFAULTS.contentWidth>(DEFAULTS.contentWidth)
 
-let initialized = false
+// Watchers live in a detached effect scope so they survive the unmount/HMR
+// of whichever component happened to call useCustomizer() first.
+let scope: EffectScope | null = null
+
+if (import.meta.hot) {
+  import.meta.hot.dispose(() => {
+    scope?.stop()
+    scope = null
+  })
+}
 
 export function useCustomizer() {
   const theme = useTheme()
 
   const primaryValid = computed(() => HEX_RE.test(primary.value))
 
-  if (!initialized) {
-    initialized = true
+  if (!scope) {
+    scope = effectScope(true)
 
     function applyPrimary(hex: string) {
       if (!HEX_RE.test(hex)) return
@@ -151,9 +161,11 @@ export function useCustomizer() {
 `
     }
 
-    watch(primary, applyPrimary)
-    watch(surface, applySurface)
-    watch(radius, (px) => applyRadius(Number(px) || 0))
+    scope.run(() => {
+      watch(primary, applyPrimary)
+      watch(surface, applySurface)
+      watch(radius, (px) => applyRadius(Number(px) || 0))
+    })
   }
 
   function reset() {

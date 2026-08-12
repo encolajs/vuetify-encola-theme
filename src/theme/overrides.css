@@ -452,6 +452,29 @@ a:focus-visible {
   color: rgb(var(--v-theme-error));
 }
 
+/* content width: compact caps the layout at 1200px and pages may narrow
+   themselves further; wide lifts every cap */
+.e-content--compact {
+  max-width: 1200px;
+}
+
+.e-content--wide {
+  max-width: none;
+}
+
+.e-page-narrow {
+  max-width: 860px;
+}
+
+.e-page-narrow--sm {
+  max-width: 720px;
+}
+
+.e-content--wide .e-page-narrow,
+.e-content--wide .e-page-narrow--sm {
+  max-width: none;
+}
+
 /* theme customizer drawer */
 .e-customizer__swatch {
   display: inline-block;

@@ -77,8 +77,8 @@ onMounted(() => {
 
     <VMain>
       <div
-        class="pa-6 mx-auto"
-        :style="{ maxWidth: customizer.contentWidth.value === 'compact' ? '1200px' : 'none' }"
+        class="pa-6 mx-auto e-content"
+        :class="`e-content--${customizer.contentWidth.value}`"
       >
         <slot />
       </div>

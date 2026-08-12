@@ -27,7 +27,7 @@ function save() {
 </script>
 
 <template>
-  <div class="d-flex flex-column ga-6" style="max-width: 860px">
+  <div class="d-flex flex-column ga-6 e-page-narrow">
     <div>
       <h1 class="text-headline-medium">Settings</h1>
       <p class="text-body-medium mt-1" style="opacity: 0.7">
