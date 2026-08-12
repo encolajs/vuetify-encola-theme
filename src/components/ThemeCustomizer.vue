@@ -53,11 +53,6 @@ $button-icon-border-radius: ${rem(px)},
 border-radius: ${rem(px * 2)}; /* menus, dialogs */`
 })
 
-const widthSnippet = computed(
-  () => `<!-- src/layouts/default.vue -->
-<div class="pa-6 mx-auto"
-  style="max-width: ${contentWidth.value === 'compact' ? '1200px' : 'none'}">`,
-)
 </script>
 
 <template>
@@ -140,10 +135,6 @@ const widthSnippet = computed(
           <div>
             <div class="text-label-medium mb-1">2. Border radius</div>
             <pre class="e-customizer__code">{{ radiusSnippet }}</pre>
-          </div>
-          <div>
-            <div class="text-label-medium mb-1">3. Content width</div>
-            <pre class="e-customizer__code">{{ widthSnippet }}</pre>
           </div>
         </div>
       </div>
