@@ -51,6 +51,8 @@
   // (px) in SASS. rem heights are re-emitted per size in overrides.css.
   $button-height: 32px,
   $button-text-transform: none,
+  // icon buttons are rounded squares, not Material circles
+  $button-icon-border-radius: 0.25rem,
   $button-elevation: ('default': 0, 'hover': 0, 'active': 0),
   $button-icon-font-size: 1.125rem,
 
