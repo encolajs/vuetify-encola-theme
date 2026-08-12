@@ -92,8 +92,8 @@ const plans = [
               </li>
             </ul>
             <div class="mt-auto pt-6">
-              <EBtn v-if="plan.highlighted" block>Get started</EBtn>
-              <EBtnOutline v-else block>Get started</EBtnOutline>
+              <VBtn color="primary" v-if="plan.highlighted" block>Get started</VBtn>
+              <VBtn variant="outlined" v-else block>Get started</VBtn>
             </div>
           </VCardText>
         </VCard>

@@ -158,16 +158,17 @@ const userMenu = [
               <VIcon :icon="ChevronsUpDown" size="14" style="opacity: 0.5" />
             </template>
           </VListItem>
-          <EBtnGhost
+          <VBtn
             v-else
             v-tooltip="{ text: environment, location: 'end' }"
+            variant="text"
             icon
             block
             aria-label="Environment"
             v-bind="menuProps"
           >
             <VIcon :icon="Server" size="18" />
-          </EBtnGhost>
+          </VBtn>
         </template>
         <VList min-width="220">
           <VListItem

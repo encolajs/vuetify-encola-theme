@@ -124,8 +124,8 @@ function next() {
         </VWindow>
 
         <div class="d-flex justify-space-between mt-6">
-          <EBtnGhost :disabled="step === 0" @click="step--">Back</EBtnGhost>
-          <EBtn @click="next">{{ isLast ? 'Finish' : 'Continue' }}</EBtn>
+          <VBtn variant="text" :disabled="step === 0" @click="step--">Back</VBtn>
+          <VBtn color="primary" @click="next">{{ isLast ? 'Finish' : 'Continue' }}</VBtn>
         </div>
       </VCardText>
     </VCard>

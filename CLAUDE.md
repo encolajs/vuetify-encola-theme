@@ -16,7 +16,7 @@ A **downloadable Vuetify theme/template** that makes Vuetify 4 look like Nuxt UI
 All restyling flows through exactly four places. Never restyle anywhere else.
 
 1. `src/theme/settings.scss` — SASS variable overrides (`@use 'vuetify/settings' with (...)`): radius scale, typography map, elevation/shadow maps, component dimensions (`$button-height`, `$field-control-height`, ...).
-2. `src/theme/preset.ts` — `createVuetify` options: `defaults` (ripple off, flat variants, density), `aliases` (solid/soft/ghost button taxonomy), `theme` (colors + custom `--v-*` variables incl. fonts), `icons` (lucide).
+2. `src/theme/preset.ts` — `createVuetify` options: `defaults` (ripple off, flat variants, density), `theme` (colors + custom `--v-*` variables incl. fonts), `icons` (lucide).
 3. `src/theme/overrides.css` — **unlayered** CSS for what SASS/defaults can't reach: focus rings, hover background swaps, card ring-instead-of-shadow. Vuetify 4 puts all its CSS in `@layer`, so unlayered CSS always wins — `!important` is never needed and never allowed.
 4. `src/components/E*.vue` — minimal wrapper components, only where Vuetify's DOM is structurally Material (currently `EFormField.vue` for static labels).
 
@@ -35,7 +35,7 @@ All restyling flows through exactly four places. Never restyle anywhere else.
 - **Never use `elevation`, `ripple`, or shadow utility classes** in example pages. The preset disables them globally; don't re-enable locally.
 - **No `!important`** in any CSS. If an override doesn't stick, the CSS is incorrectly inside a layer — fix that instead.
 - **All dimensions in theme CSS/SCSS use rem** (16px root). Vuetify SASS variables that go through px arithmetic (density modifiers, size-scale math — dart-sass can't add rem + px) stay px in `settings.scss` with a comment saying so, and their runtime CSS variables get re-emitted in rem in `overrides.css` (see `--v-btn-height`, `--v-input-control-height`, the switch sizing).
-- Buttons use the aliased taxonomy from `preset.ts` (solid/soft/ghost equivalents), not raw Material variants like `tonal`/`elevated`.
+- Buttons are plain `VBtn` with props: `flat` (the default) + `color` = solid, `tonal` = soft, `outlined`, `text` = ghost, `plain` = link. Never use `elevated`.
 - Example pages must use only themed Vuetify components + the `E*` wrappers — no one-off page-scoped styling hacks, since buyers copy pages verbatim. If a page needs a style fix, fix it in the four theme layers so every page benefits.
 
 ## Example pages

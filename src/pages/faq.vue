@@ -52,7 +52,7 @@ const faqs = [
             <p class="text-body-medium mt-1" style="opacity: 0.7">
               Mon–Fri, 9:00–17:00 EET
             </p>
-            <EBtnSoft class="mt-4">Start a chat</EBtnSoft>
+            <VBtn variant="tonal" color="primary" class="mt-4">Start a chat</VBtn>
           </VCardText>
         </VCard>
       </VCol>
@@ -64,7 +64,7 @@ const faqs = [
             <p class="text-body-medium mt-1" style="opacity: 0.7">
               We reply within one business day
             </p>
-            <EBtnSoft class="mt-4">Send an email</EBtnSoft>
+            <VBtn variant="tonal" color="primary" class="mt-4">Send an email</VBtn>
           </VCardText>
         </VCard>
       </VCol>

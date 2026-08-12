@@ -85,12 +85,12 @@ const widthSnippet = computed(
     <div class="d-flex align-center justify-space-between px-4" style="height: 56px">
       <span class="text-title-small">Customize theme</span>
       <div class="d-flex ga-1">
-        <EBtnGhost icon size="small" aria-label="Reset to defaults" @click="reset">
+        <VBtn variant="text" icon size="small" aria-label="Reset to defaults" @click="reset">
           <VIcon :icon="RotateCcw" size="16" />
-        </EBtnGhost>
-        <EBtnGhost icon size="small" aria-label="Close" @click="open = false">
+        </VBtn>
+        <VBtn variant="text" icon size="small" aria-label="Close" @click="open = false">
           <VIcon :icon="X" size="16" />
-        </EBtnGhost>
+        </VBtn>
       </div>
     </div>
     <VDivider />

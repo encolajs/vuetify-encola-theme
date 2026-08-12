@@ -46,24 +46,24 @@ const breadcrumbs = [
     <section>
       <h2 class="text-title-large mb-4">Buttons</h2>
       <div class="d-flex flex-wrap ga-2 align-center">
-        <EBtn>Solid</EBtn>
-        <EBtnSoft>Soft</EBtnSoft>
-        <EBtnOutline>Outline</EBtnOutline>
-        <EBtnGhost>Ghost</EBtnGhost>
-        <EBtnLink>Link</EBtnLink>
-        <EBtn color="neutral">Neutral</EBtn>
-        <EBtn color="error">Danger</EBtn>
+        <VBtn color="primary">Solid</VBtn>
+        <VBtn variant="tonal" color="primary">Soft</VBtn>
+        <VBtn variant="outlined">Outline</VBtn>
+        <VBtn variant="text">Ghost</VBtn>
+        <VBtn variant="plain" color="primary">Link</VBtn>
+        <VBtn color="neutral">Neutral</VBtn>
+        <VBtn color="error">Danger</VBtn>
       </div>
       <div class="d-flex flex-wrap ga-2 align-center mt-3">
-        <EBtn size="small">Small</EBtn>
-        <EBtn>Default</EBtn>
-        <EBtn size="large">Large</EBtn>
-        <EBtn :prepend-icon="Plus">With icon</EBtn>
-        <EBtn :loading="true">Loading</EBtn>
-        <EBtn disabled>Disabled</EBtn>
-        <EBtnGhost icon aria-label="Notifications">
+        <VBtn color="primary" size="small">Small</VBtn>
+        <VBtn color="primary">Default</VBtn>
+        <VBtn color="primary" size="large">Large</VBtn>
+        <VBtn color="primary" :prepend-icon="Plus">With icon</VBtn>
+        <VBtn color="primary" :loading="true">Loading</VBtn>
+        <VBtn color="primary" disabled>Disabled</VBtn>
+        <VBtn variant="text" icon aria-label="Notifications">
           <VIcon :icon="Bell" size="18" />
-        </EBtnGhost>
+        </VBtn>
       </div>
     </section>
 
@@ -199,8 +199,8 @@ const breadcrumbs = [
               steps — no elevation anywhere.
             </VCardText>
             <VCardActions>
-              <EBtnGhost>Cancel</EBtnGhost>
-              <EBtn>Save</EBtn>
+              <VBtn variant="text">Cancel</VBtn>
+              <VBtn color="primary">Save</VBtn>
             </VCardActions>
           </VCard>
         </VCol>
@@ -278,9 +278,9 @@ const breadcrumbs = [
       <div class="d-flex flex-wrap ga-2 align-center">
         <VMenu>
           <template #activator="{ props: menuProps }">
-            <EBtnOutline v-bind="menuProps" append-icon="$dropdown">
+            <VBtn variant="outlined" v-bind="menuProps" append-icon="$dropdown">
               Options
-            </EBtnOutline>
+            </VBtn>
           </template>
           <VList min-width="180">
             <VListItem title="Edit" />
@@ -294,7 +294,7 @@ const breadcrumbs = [
           </VList>
         </VMenu>
 
-        <EBtn @click="dialog = true">Open dialog</EBtn>
+        <VBtn color="primary" @click="dialog = true">Open dialog</VBtn>
         <VDialog v-model="dialog" max-width="440">
           <VCard>
             <VCardItem>
@@ -307,15 +307,15 @@ const breadcrumbs = [
             </VCardText>
             <VCardActions>
               <VSpacer />
-              <EBtnGhost @click="dialog = false">Cancel</EBtnGhost>
-              <EBtn color="error" @click="dialog = false">Delete</EBtn>
+              <VBtn variant="text" @click="dialog = false">Cancel</VBtn>
+              <VBtn color="error" @click="dialog = false">Delete</VBtn>
             </VCardActions>
           </VCard>
         </VDialog>
 
         <VTooltip text="Tooltips are flat too">
           <template #activator="{ props: tipProps }">
-            <EBtnGhost v-bind="tipProps">Hover me</EBtnGhost>
+            <VBtn variant="text" v-bind="tipProps">Hover me</VBtn>
           </template>
         </VTooltip>
       </div>

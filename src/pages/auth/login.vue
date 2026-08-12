@@ -55,7 +55,7 @@ function submit() {
           </RouterLink>
         </div>
 
-        <EBtn type="submit" block>Sign in</EBtn>
+        <VBtn color="primary" type="submit" block>Sign in</VBtn>
       </form>
     </VCardText>
   </VCard>

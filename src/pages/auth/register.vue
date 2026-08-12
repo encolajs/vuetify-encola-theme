@@ -66,7 +66,7 @@ function submit() {
           </VCheckbox>
         </EFormField>
 
-        <EBtn type="submit" block>Create account</EBtn>
+        <VBtn color="primary" type="submit" block>Create account</VBtn>
       </form>
     </VCardText>
   </VCard>

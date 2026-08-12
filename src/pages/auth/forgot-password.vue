@@ -40,11 +40,11 @@ function submit() {
           <VTextField v-model="email" placeholder="you@example.com" type="email" autocomplete="email" />
         </EFormField>
 
-        <EBtn type="submit" block>Send reset link</EBtn>
+        <VBtn color="primary" type="submit" block>Send reset link</VBtn>
 
-        <EBtnGhost :prepend-icon="ArrowLeft" block to="/auth/login">
+        <VBtn variant="text" :prepend-icon="ArrowLeft" block to="/auth/login">
           Back to sign in
-        </EBtnGhost>
+        </VBtn>
       </form>
     </VCardText>
   </VCard>

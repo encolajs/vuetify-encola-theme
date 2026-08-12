@@ -42,8 +42,8 @@ const timezones = ['UTC', 'Europe/Bucharest', 'Europe/London', 'America/New_York
             </VRadioGroup>
           </EFormField>
           <div class="d-flex ga-2 justify-end">
-            <EBtnGhost>Cancel</EBtnGhost>
-            <EBtn type="submit">Create project</EBtn>
+            <VBtn variant="text">Cancel</VBtn>
+            <VBtn color="primary" type="submit">Create project</VBtn>
           </div>
         </form>
       </VCardText>
@@ -90,8 +90,8 @@ const timezones = ['UTC', 'Europe/Bucharest', 'Europe/London', 'America/New_York
             </VCol>
           </VRow>
           <div class="d-flex ga-2 justify-end">
-            <EBtnGhost>Cancel</EBtnGhost>
-            <EBtn type="submit">Save address</EBtn>
+            <VBtn variant="text">Cancel</VBtn>
+            <VBtn color="primary" type="submit">Save address</VBtn>
           </div>
         </form>
       </VCardText>
@@ -127,12 +127,12 @@ const timezones = ['UTC', 'Europe/Bucharest', 'Europe/London', 'America/New_York
               </p>
             </VCol>
             <VCol cols="12" md="8" class="d-flex ga-2">
-              <EBtnOutline color="error">Deactivate account</EBtnOutline>
-              <EBtn color="error">Delete account</EBtn>
+              <VBtn variant="outlined" color="error">Deactivate account</VBtn>
+              <VBtn color="error">Delete account</VBtn>
             </VCol>
           </VRow>
           <div class="d-flex ga-2 justify-end">
-            <EBtn type="submit">Save preferences</EBtn>
+            <VBtn color="primary" type="submit">Save preferences</VBtn>
           </div>
         </form>
       </VCardText>

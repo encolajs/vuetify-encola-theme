@@ -11,8 +11,8 @@ import { ArrowLeft } from '@lucide/vue'
       moved or deleted.
     </p>
     <div class="d-flex justify-center ga-2 mt-6">
-      <EBtn to="/">Go back home</EBtn>
-      <EBtnGhost :prepend-icon="ArrowLeft" @click="$router.back()">Go back</EBtnGhost>
+      <VBtn color="primary" to="/">Go back home</VBtn>
+      <VBtn variant="text" :prepend-icon="ArrowLeft" @click="$router.back()">Go back</VBtn>
     </div>
   </div>
 </template>

@@ -58,8 +58,8 @@ function save() {
                   <span class="text-title-medium">FM</span>
                 </VAvatar>
                 <div class="d-flex ga-2">
-                  <EBtnOutline size="small">Change avatar</EBtnOutline>
-                  <EBtnGhost size="small" color="error">Remove</EBtnGhost>
+                  <VBtn variant="outlined" size="small">Change avatar</VBtn>
+                  <VBtn variant="text" size="small" color="error">Remove</VBtn>
                 </div>
               </div>
               <VRow dense>
@@ -85,7 +85,7 @@ function save() {
                 </VCol>
               </VRow>
               <div class="d-flex justify-end">
-                <EBtn type="submit">Save changes</EBtn>
+                <VBtn color="primary" type="submit">Save changes</VBtn>
               </div>
             </form>
           </VCardText>
@@ -111,7 +111,7 @@ function save() {
                 <VTextField placeholder="••••••••" type="password" autocomplete="new-password" />
               </EFormField>
               <div class="d-flex justify-end">
-                <EBtn type="submit">Update password</EBtn>
+                <VBtn color="primary" type="submit">Update password</VBtn>
               </div>
             </form>
           </VCardText>
@@ -134,7 +134,7 @@ function save() {
               <VSwitch v-model="notifications.digest" label="Weekly digest email" />
               <VSwitch v-model="notifications.marketing" label="Product news and offers" />
               <div class="d-flex justify-end mt-4">
-                <EBtn type="submit">Save preferences</EBtn>
+                <VBtn color="primary" type="submit">Save preferences</VBtn>
               </div>
             </form>
           </VCardText>

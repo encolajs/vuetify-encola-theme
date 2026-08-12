@@ -29,16 +29,16 @@ function submit() {
       <form class="d-flex flex-column ga-4" @submit.prevent="submit">
         <VOtpInput v-model="code" length="6" variant="outlined" class="pa-0" />
 
-        <EBtn type="submit" block :disabled="!complete">Verify</EBtn>
+        <VBtn color="primary" type="submit" block :disabled="!complete">Verify</VBtn>
 
         <p class="text-body-medium text-center" style="opacity: 0.7">
           Didn't get a code?
           <a href="#" class="text-primary" @click.prevent>Resend</a>
         </p>
 
-        <EBtnGhost :prepend-icon="ArrowLeft" block to="/auth/login">
+        <VBtn variant="text" :prepend-icon="ArrowLeft" block to="/auth/login">
           Back to sign in
-        </EBtnGhost>
+        </VBtn>
       </form>
     </VCardText>
   </VCard>

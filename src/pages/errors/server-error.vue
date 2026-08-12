@@ -11,8 +11,8 @@ import { RefreshCw } from '@lucide/vue'
       looking into it.
     </p>
     <div class="d-flex justify-center ga-2 mt-6">
-      <EBtn :prepend-icon="RefreshCw" @click="$router.go(0)">Try again</EBtn>
-      <EBtnGhost to="/">Go back home</EBtnGhost>
+      <VBtn color="primary" :prepend-icon="RefreshCw" @click="$router.go(0)">Try again</VBtn>
+      <VBtn variant="text" to="/">Go back home</VBtn>
     </div>
   </div>
 </template>

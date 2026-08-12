@@ -38,8 +38,8 @@ const activity = [
         </p>
       </div>
       <div class="d-flex ga-2">
-        <EBtnOutline :prepend-icon="Download">Export</EBtnOutline>
-        <EBtn :prepend-icon="Plus">New invoice</EBtn>
+        <VBtn variant="outlined" :prepend-icon="Download">Export</VBtn>
+        <VBtn color="primary" :prepend-icon="Plus">New invoice</VBtn>
       </div>
     </div>
 
@@ -120,10 +120,10 @@ const activity = [
         <VCardTitle>Quick actions</VCardTitle>
       </VCardItem>
       <VCardText class="d-flex flex-wrap ga-2">
-        <EBtnSoft :prepend-icon="Plus">Add customer</EBtnSoft>
-        <EBtnSoft :prepend-icon="CreditCard">Create invoice</EBtnSoft>
-        <EBtnSoft :prepend-icon="Download">Download report</EBtnSoft>
-        <EBtnSoft :prepend-icon="Users">Invite team member</EBtnSoft>
+        <VBtn variant="tonal" color="primary" :prepend-icon="Plus">Add customer</VBtn>
+        <VBtn variant="tonal" color="primary" :prepend-icon="CreditCard">Create invoice</VBtn>
+        <VBtn variant="tonal" color="primary" :prepend-icon="Download">Download report</VBtn>
+        <VBtn variant="tonal" color="primary" :prepend-icon="Users">Invite team member</VBtn>
       </VCardText>
     </VCard>
   </div>

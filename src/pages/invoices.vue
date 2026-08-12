@@ -66,8 +66,8 @@ const currency = new Intl.NumberFormat('en-US', { style: 'currency', currency: '
         </p>
       </div>
       <div class="d-flex ga-2">
-        <EBtnOutline :prepend-icon="Download">Export</EBtnOutline>
-        <EBtn :prepend-icon="Plus">New invoice</EBtn>
+        <VBtn variant="outlined" :prepend-icon="Download">Export</VBtn>
+        <VBtn color="primary" :prepend-icon="Plus">New invoice</VBtn>
       </div>
     </div>
 
@@ -122,9 +122,9 @@ const currency = new Intl.NumberFormat('en-US', { style: 'currency', currency: '
         <template #item.actions>
           <VMenu>
             <template #activator="{ props: menuProps }">
-              <EBtnGhost icon size="small" aria-label="Row actions" v-bind="menuProps">
+              <VBtn variant="text" icon size="small" aria-label="Row actions" v-bind="menuProps">
                 <VIcon :icon="EllipsisVertical" size="16" />
-              </EBtnGhost>
+              </VBtn>
             </template>
             <VList min-width="160">
               <VListItem title="View" />

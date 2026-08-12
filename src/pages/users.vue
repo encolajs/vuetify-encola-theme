@@ -98,7 +98,7 @@ const activeCount = computed(() => users.value.filter((u) => u.active).length)
           {{ users.length }} members, {{ activeCount }} active.
         </p>
       </div>
-      <EBtn :prepend-icon="Plus" @click="openCreate">Add user</EBtn>
+      <VBtn color="primary" :prepend-icon="Plus" @click="openCreate">Add user</VBtn>
     </div>
 
     <VCard>
@@ -139,12 +139,12 @@ const activeCount = computed(() => users.value.filter((u) => u.active).length)
         </template>
         <template #item.actions="{ item }">
           <div class="d-flex justify-end ga-1">
-            <EBtnGhost icon size="small" aria-label="Edit user" @click="openEdit(item)">
+            <VBtn variant="text" icon size="small" aria-label="Edit user" @click="openEdit(item)">
               <VIcon :icon="Pencil" size="16" />
-            </EBtnGhost>
-            <EBtnGhost icon size="small" color="error" aria-label="Delete user" @click="confirmDelete(item)">
+            </VBtn>
+            <VBtn variant="text" icon size="small" color="error" aria-label="Delete user" @click="confirmDelete(item)">
               <VIcon :icon="Trash2" size="16" />
-            </EBtnGhost>
+            </VBtn>
           </div>
         </template>
       </VDataTable>
@@ -175,8 +175,8 @@ const activeCount = computed(() => users.value.filter((u) => u.active).length)
         </VCardText>
         <VCardActions>
           <VSpacer />
-          <EBtnGhost @click="dialog = false">Cancel</EBtnGhost>
-          <EBtn @click="save">{{ editing ? 'Save changes' : 'Add user' }}</EBtn>
+          <VBtn variant="text" @click="dialog = false">Cancel</VBtn>
+          <VBtn color="primary" @click="save">{{ editing ? 'Save changes' : 'Add user' }}</VBtn>
         </VCardActions>
       </VCard>
     </VDialog>
@@ -193,8 +193,8 @@ const activeCount = computed(() => users.value.filter((u) => u.active).length)
         </VCardText>
         <VCardActions>
           <VSpacer />
-          <EBtnGhost @click="deleteDialog = false">Cancel</EBtnGhost>
-          <EBtn color="error" @click="remove">Remove user</EBtn>
+          <VBtn variant="text" @click="deleteDialog = false">Cancel</VBtn>
+          <VBtn color="error" @click="remove">Remove user</VBtn>
         </VCardActions>
       </VCard>
     </VDialog>

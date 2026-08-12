@@ -4,7 +4,6 @@
 // =============================================================
 import type { VuetifyOptions } from 'vuetify'
 import type { ThemeDefinition } from 'vuetify'
-import { VBtn } from 'vuetify/components/VBtn'
 import { aliases as iconAliases, lucide } from './icons'
 
 const fontBody =
@@ -108,24 +107,13 @@ export const dark: ThemeDefinition = {
 }
 
 export const encolaOptions: VuetifyOptions = {
-  // Nuxt-UI-like button taxonomy. Pages use these, never raw variants.
-  aliases: {
-    EBtn: VBtn, // solid
-    EBtnSoft: VBtn, // translucent tint of its color
-    EBtnOutline: VBtn, // hairline ring, neutral text
-    EBtnGhost: VBtn, // borderless, hover tint
-    EBtnLink: VBtn, // looks like a link
-  },
   defaults: {
     global: {
       ripple: false,
     },
+    // flat is the "solid" look; pages pass color/variant directly:
+    // solid = flat + color, soft = tonal, ghost = text, link = plain
     VBtn: { variant: 'flat' },
-    EBtn: { variant: 'flat', color: 'primary' },
-    EBtnSoft: { variant: 'tonal', color: 'primary' },
-    EBtnOutline: { variant: 'outlined' },
-    EBtnGhost: { variant: 'text' },
-    EBtnLink: { variant: 'plain', color: 'primary' },
 
     VCard: { flat: true },
     VToolbar: { flat: true },
