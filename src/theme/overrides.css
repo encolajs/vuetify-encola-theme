@@ -365,7 +365,10 @@ a:focus-visible {
 
 /* ---- lists -------------------------------------------------- */
 .v-list {
-  padding: 4px;
+  padding: 0.25rem;
+  /* gap between prepend icon/avatar and the label — Vuetify's runtime
+     hook for the Material 32px spacer. Applies to nav, menus, selects. */
+  --v-list-prepend-gap: 0.5rem;
 }
 
 .v-list-item {
