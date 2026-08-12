@@ -115,7 +115,13 @@ a:focus-visible {
 }
 
 /* app sidebar: logo + top section pinned, only the main menu scrolls,
-   bottom section pinned. Structure lives in AppSidebar.vue. */
+   bottom section pinned. Structure lives in AppSidebar.vue.
+   The muted surface step sets it apart from the content area (and makes
+   the chosen surface palette visible). */
+.e-sidebar.v-navigation-drawer {
+  background: rgb(var(--v-theme-surface-muted));
+}
+
 .e-sidebar .v-navigation-drawer__content {
   display: flex;
   flex-direction: column;
