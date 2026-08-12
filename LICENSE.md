@@ -1,10 +1,6 @@
 # Encola Theme License
 
-> **DRAFT — have this reviewed by a lawyer and fill in the placeholders
-> before selling.** The structure below follows the common single-license
-> model used by commercial theme stores.
-
-Copyright (c) 2026 [SELLER NAME / COMPANY]
+Copyright (c) 2026 EncolaJS LLC
 
 ## Grant
 
