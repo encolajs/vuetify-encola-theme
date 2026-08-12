@@ -165,11 +165,16 @@ a:focus-visible {
   display: none;
 }
 
-/* rail is icons only: hide labels/subtitles/append chevrons, which the
-   tightened 0.5rem prepend gap would otherwise let peek into view */
+/* rail is icons only: hide labels/subtitles/append chevrons and the
+   prepend spacer, and center the icon in the item */
 .v-navigation-drawer--rail .v-list-item__content,
-.v-navigation-drawer--rail .v-list-item__append {
+.v-navigation-drawer--rail .v-list-item__append,
+.v-navigation-drawer--rail .v-list-item__spacer {
   display: none;
+}
+
+.v-navigation-drawer--rail .v-list-item {
+  justify-content: center;
 }
 
 /* ---- buttons ------------------------------------------------ */
