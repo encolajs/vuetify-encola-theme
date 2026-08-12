@@ -259,6 +259,48 @@ a:focus-visible {
   box-shadow: none;
 }
 
+/* Compact rem-sized switch (Nuxt UI proportions: 2.25rem x 1.25rem track,
+   1rem thumb, 0.125rem edge gap). Vuetify generates the size classes from
+   px SASS maps (math.div over $switch-inset-sizes), so the CSS variables
+   are re-emitted here in rem instead of settings.scss. */
+.v-switch--inset.v-switch--size-default {
+  --v-switch-scale: 1;
+  --v-switch-track-height: 1.25rem;
+  --v-switch-thumb-height: 1rem;
+  --v-switch-thumb-width: 1rem;
+}
+
+.v-switch--inset.v-switch--size-default .v-switch__track {
+  min-width: 2.25rem;
+}
+
+/* the thumb keeps its size when off — no Material 2/3 shrink */
+.v-switch--inset .v-switch__thumb {
+  --v-switch-inset-thumb-off-scale: 1;
+}
+
+/* thumb travel: (2.25rem track - 1rem thumb) / 2 - 0.125rem gap = 0.5rem,
+   replacing Vuetify's hardcoded translateX(10px * scale) */
+.v-locale--is-ltr .v-switch--inset.v-switch--size-default .v-selection-control__input {
+  transform: translateX(-0.5rem);
+}
+
+.v-locale--is-ltr .v-switch--inset.v-switch--size-default .v-selection-control--dirty .v-selection-control__input {
+  transform: translateX(0.5rem);
+}
+
+.v-locale--is-rtl .v-switch--inset.v-switch--size-default .v-selection-control__input {
+  transform: translateX(0.5rem);
+}
+
+.v-locale--is-rtl .v-switch--inset.v-switch--size-default .v-selection-control--dirty .v-selection-control__input {
+  transform: translateX(-0.5rem);
+}
+
+.v-switch .v-label {
+  padding-inline-start: 0.625rem;
+}
+
 /* ---- lists -------------------------------------------------- */
 .v-list {
   padding: 4px;

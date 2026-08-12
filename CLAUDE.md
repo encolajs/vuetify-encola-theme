@@ -34,6 +34,7 @@ All restyling flows through exactly four places. Never restyle anywhere else.
 - **Never pass `label` to field components** (VTextField, VSelect, ...). The floating-label animation is structural and cannot be styled away. Always wrap fields in `EFormField` (static label/help/error above the field) and use `placeholder` on the input.
 - **Never use `elevation`, `ripple`, or shadow utility classes** in example pages. The preset disables them globally; don't re-enable locally.
 - **No `!important`** in any CSS. If an override doesn't stick, the CSS is incorrectly inside a layer — fix that instead.
+- **All dimensions in theme CSS/SCSS use rem** (16px root). Vuetify SASS variables that go through px arithmetic (density modifiers, size-scale math — dart-sass can't add rem + px) stay px in `settings.scss` with a comment saying so, and their runtime CSS variables get re-emitted in rem in `overrides.css` (see `--v-btn-height`, `--v-input-control-height`, the switch sizing).
 - Buttons use the aliased taxonomy from `preset.ts` (solid/soft/ghost equivalents), not raw Material variants like `tonal`/`elevated`.
 - Example pages must use only themed Vuetify components + the `E*` wrappers — no one-off page-scoped styling hacks, since buyers copy pages verbatim. If a page needs a style fix, fix it in the four theme layers so every page benefits.
 
