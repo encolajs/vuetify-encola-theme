@@ -165,6 +165,13 @@ a:focus-visible {
   display: none;
 }
 
+/* rail is icons only: hide labels/subtitles/append chevrons, which the
+   tightened 0.5rem prepend gap would otherwise let peek into view */
+.v-navigation-drawer--rail .v-list-item__content,
+.v-navigation-drawer--rail .v-list-item__append {
+  display: none;
+}
+
 /* ---- buttons ------------------------------------------------ */
 .v-btn {
   letter-spacing: 0;
