@@ -108,6 +108,30 @@ a:focus-visible {
   letter-spacing: 0;
 }
 
+/* rem equivalents of the SASS-computed px heights ($button-height is
+   px-locked in settings.scss: the size mixin adds $size-scale in px).
+   Heights come from --v-btn-height, so re-emitting the variable is enough;
+   Vuetify's own 16/24/32/40/48px values map to these. */
+.v-btn--size-x-small {
+  --v-btn-height: 1rem;
+}
+
+.v-btn--size-small {
+  --v-btn-height: 1.5rem;
+}
+
+.v-btn--size-default {
+  --v-btn-height: 2rem;
+}
+
+.v-btn--size-large {
+  --v-btn-height: 2.5rem;
+}
+
+.v-btn--size-x-large {
+  --v-btn-height: 3rem;
+}
+
 .v-btn:focus-visible {
   outline: 2px solid rgb(var(--v-theme-primary));
   outline-offset: 2px;
@@ -163,15 +187,30 @@ a:focus-visible {
   --v-input-padding-top: 0px;
 }
 
+/* rem equivalents of the SASS-computed px control heights
+   ($input-control-height is px-locked in settings.scss: VInput adds the
+   density modifier in px). 24/16/8px map to these. */
+.v-input--density-default {
+  --v-input-control-height: 1.5rem;
+}
+
+.v-input--density-comfortable {
+  --v-input-control-height: 1rem;
+}
+
+.v-input--density-compact {
+  --v-input-control-height: 0.5rem;
+}
+
 /* Similarly, VField.sass hardcodes no-label fields (all of ours) to
    padding-top 0px / padding-bottom 16px + density modifier — Material's
-   trick for centering text when no label will float. Restore the symmetric
-   padding from settings.scss so the min-height formula stays
-   max(--v-input-control-height, 1.3125rem + 5.5px + 5.5px) = 32px exactly. */
+   trick for centering text when no label will float. Restore symmetric
+   rem padding so the min-height formula resolves to exactly 2rem:
+   max(--v-input-control-height, 1.3125rem + 0.34375rem + 0.34375rem). */
 .v-field--single-line,
 .v-field--no-label {
-  --v-field-padding-top: 5.5px;
-  --v-field-padding-bottom: 5.5px;
+  --v-field-padding-top: 0.34375rem;
+  --v-field-padding-bottom: 0.34375rem;
 }
 
 /* hairline ring idle, primary ring on focus, error ring on error */
