@@ -6,9 +6,9 @@ const tab = ref('profile')
 const saved = ref(false)
 
 const profile = ref({
-  name: 'Florin Miu',
-  email: 'florin@example.com',
-  username: 'florin',
+  name: 'Jane Doe',
+  email: 'jane.doe@domain.com',
+  username: 'janedoe',
   bio: '',
 })
 

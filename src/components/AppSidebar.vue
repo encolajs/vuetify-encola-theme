@@ -103,7 +103,7 @@ function isSectionActive(section: NavSection) {
   return section.items?.some((item) => route.path.startsWith(item.to)) ?? false
 }
 
-const user = { name: 'Florin Miu', email: 'florin@example.com', initials: 'FM' }
+const user = { name: 'Jane Doe', email: 'jane.doe@domain.com', initials: 'JD' }
 
 const userMenu = [
   { title: 'Profile', icon: CircleUser },
