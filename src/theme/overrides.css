@@ -292,10 +292,18 @@ a:focus-visible {
    VInput.sass, no SASS variable reaches it). That value is added into
    .v-field__input's padding-top and its min-height formula
    max(var(--v-input-control-height), 1.3125rem + padding-top + padding-bottom),
-   inflating our 32px fields to 48px. This theme never uses floating labels
-   (static labels live in EFormField), so zero it for every density. */
-.v-input {
+   inflating our 32px fields to 48px. Zero it — but only for label-less
+   fields (the theme's convention via EFormField), so the Material
+   floating `label` prop keeps its geometry for users who opt into it. */
+.v-input:has(.v-field--no-label),
+.v-input:has(.v-field--single-line) {
   --v-input-padding-top: 0px;
+}
+
+/* opt-in Material behavior: a field with a floating label gets taller
+   geometry so the label has room to rest and float */
+.v-input:has(.v-field:not(.v-field--no-label):not(.v-field--single-line)) {
+  --v-input-control-height: 3rem;
 }
 
 /* rem equivalents of the SASS-computed px control heights

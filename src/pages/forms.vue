@@ -169,5 +169,40 @@ const timezones = ['UTC', 'Europe/Bucharest', 'Europe/London', 'America/New_York
         </form>
       </VCardText>
     </VCard>
+
+    <!-- Material floating labels: supported, but off-theme -->
+    <VCard>
+      <VCardItem>
+        <VCardTitle>Material behaviour</VCardTitle>
+        <VCardSubtitle>
+          Outlined fields with the floating label prop — the closest variant
+          to the theme for users who want Material UX
+        </VCardSubtitle>
+      </VCardItem>
+      <VCardText>
+        <form class="d-flex flex-column ga-2" @submit.prevent="saved = true">
+          <VRow dense>
+            <VCol cols="12" md="6">
+              <VTextField label="First name" autocomplete="given-name" />
+            </VCol>
+            <VCol cols="12" md="6">
+              <VTextField label="Last name" autocomplete="family-name" />
+            </VCol>
+            <VCol cols="12">
+              <VTextField label="Email" type="email" autocomplete="email" />
+            </VCol>
+            <VCol cols="12">
+              <VSelect label="Country" :items="countries" />
+            </VCol>
+            <VCol cols="12">
+              <VTextarea label="Message" rows="3" />
+            </VCol>
+          </VRow>
+          <div class="d-flex ga-2 justify-end">
+            <VBtn color="primary" type="submit">Send</VBtn>
+          </div>
+        </form>
+      </VCardText>
+    </VCard>
   </div>
 </template>

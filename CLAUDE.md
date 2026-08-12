@@ -31,7 +31,7 @@ All restyling flows through exactly four places. Never restyle anywhere else.
 
 ## Hard conventions (Material leaks if violated)
 
-- **Never pass `label` to field components** (VTextField, VSelect, ...). The floating-label animation is structural and cannot be styled away. Always wrap fields in `EFormField` (static label/help/error above the field) and use `placeholder` on the input.
+- **Prefer static labels via `EFormField`** (label/help/error around the field) with `placeholder` on the input — the floating-label animation is structural Material and cannot be styled into a static label. The `label` prop remains *supported but off-theme*: `:has()` rules in `overrides.css` give labeled fields taller (3rem) Material geometry so the float works; the forms page demos the pattern. Theme pages themselves use `EFormField` everywhere except that demo.
 - **Never use `elevation`, `ripple`, or shadow utility classes** in example pages. The preset disables them globally; don't re-enable locally.
 - **No `!important`** in any CSS. If an override doesn't stick, the CSS is incorrectly inside a layer — fix that instead.
 - **All dimensions in theme CSS/SCSS use rem** (16px root). Vuetify SASS variables that go through px arithmetic (density modifiers, size-scale math — dart-sass can't add rem + px) stay px in `settings.scss` with a comment saying so, and their runtime CSS variables get re-emitted in rem in `overrides.css` (see `--v-btn-height`, `--v-input-control-height`, the switch sizing).
@@ -50,7 +50,7 @@ Live in `src/pages/`, using `src/layouts/default.vue` (app shell) or `src/layout
 
 ## Verification workflow
 
-After any theme-layer change: open the kitchen-sink page in light AND dark and compare against Nuxt UI's live demos (ui.nuxt.com). Tab through forms with the keyboard — focus states are where Material leaks through most. Before release: grep pages for `label=`, `elevation`, `ripple`, `!important` (all should be absent).
+After any theme-layer change: open the kitchen-sink page in light AND dark and compare against Nuxt UI's live demos (ui.nuxt.com). Tab through forms with the keyboard — focus states are where Material leaks through most. Before release: grep pages for `label=` on field components (only the Material-behaviour demo on the forms page may use it), `elevation`, `ripple`, `!important` (otherwise absent).
 
 ## Implementation flow
 
