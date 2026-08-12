@@ -31,7 +31,7 @@ import {
   TextCursorInput,
   Users,
 } from '@lucide/vue'
-import { useSidebar } from '@/composables/useSidebar'
+import { useSidebar } from '../composables/useSidebar'
 
 const { isMobile, mobileOpen, rail } = useSidebar()
 const route = useRoute()

@@ -2,7 +2,7 @@
 // Multi-step wizard: flat step indicator + VWindow, no Material stepper.
 import { computed, ref } from 'vue'
 import { Check } from '@lucide/vue'
-import EFormField from '@/components/EFormField.vue'
+import EFormField from '@/encola/components/EFormField.vue'
 
 const steps = [
   { title: 'Account', subtitle: 'Your credentials' },

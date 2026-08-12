@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // Form layout recipes: stacked, two-column, and inline label styles.
 import { ref } from 'vue'
-import EFormField from '@/components/EFormField.vue'
+import EFormField from '@/encola/components/EFormField.vue'
 
 const saved = ref(false)
 

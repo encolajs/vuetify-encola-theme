@@ -6,7 +6,7 @@ A **downloadable Vuetify theme/template** that makes Vuetify 4 look like Nuxt UI
 
 - Vue 3 + Vite + TypeScript
 - Vuetify 4 (NOT forked — restyled via config only)
-- vite-plugin-vuetify with `styles: { configFile: 'src/theme/settings.scss' }`
+- vite-plugin-vuetify with `styles: { configFile: 'src/encola/settings.scss' }`
 - lucide icons (Vuetify's built-in `lucide` iconset)
 - vue-router for example pages
 - pnpm for faster development & builds
@@ -15,10 +15,10 @@ A **downloadable Vuetify theme/template** that makes Vuetify 4 look like Nuxt UI
 
 All restyling flows through exactly four places. Never restyle anywhere else.
 
-1. `src/theme/settings.scss` — SASS variable overrides (`@use 'vuetify/settings' with (...)`): radius scale, typography map, elevation/shadow maps, component dimensions (`$button-height`, `$field-control-height`, ...).
-2. `src/theme/preset.ts` — the Encola **blueprint**: `defaults` (ripple off, flat variants, density), `theme` (colors generated from a primary hex + Tailwind neutral scale in `palettes.ts`, plus custom `--v-*` variables incl. fonts), `icons` (lucide). Consumers use `createVuetify({ blueprint: encola({ primary, surface }) })` — their own options deep-merge on top and win.
-3. `src/theme/overrides.css` — **unlayered** CSS for what SASS/defaults can't reach: focus rings, hover background swaps, card ring-instead-of-shadow. Vuetify 4 puts all its CSS in `@layer`, so unlayered CSS always wins — `!important` is never needed and never allowed.
-4. `src/components/E*.vue` — minimal wrapper components, only where Vuetify's DOM is structurally Material (currently `EFormField.vue` for static labels).
+1. `src/encola/settings.scss` — SASS variable overrides (`@use 'vuetify/settings' with (...)`): radius scale, typography map, elevation/shadow maps, component dimensions (`$button-height`, `$field-control-height`, ...).
+2. `src/encola/preset.ts` — the Encola **blueprint**: `defaults` (ripple off, flat variants, density), `theme` (colors generated from a primary hex + Tailwind neutral scale in `palettes.ts`, plus custom `--v-*` variables incl. fonts), `icons` (lucide). Consumers use `createVuetify({ blueprint: encola({ primary, surface }) })` — their own options deep-merge on top and win.
+3. `src/encola/overrides.css` — **unlayered** CSS for what SASS/defaults can't reach: focus rings, hover background swaps, card ring-instead-of-shadow. Vuetify 4 puts all its CSS in `@layer`, so unlayered CSS always wins — `!important` is never needed and never allowed.
+4. `src/encola/components/*.vue` — minimal wrapper components, only where Vuetify's DOM is structurally Material (currently `EFormField.vue` for static labels).
 
 ## Design language (target: Nuxt UI v4 look)
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import EFormField from '@/components/EFormField.vue'
+import EFormField from '@/encola/components/EFormField.vue'
 
 const tab = ref('profile')
 const saved = ref(false)

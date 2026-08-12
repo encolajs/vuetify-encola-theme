@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { Link, Mail, MessageSquare, Send } from '@lucide/vue'
-import EFormField from '@/components/EFormField.vue'
+import EFormField from '@/encola/components/EFormField.vue'
 
 const confirmDialog = ref(false)
 const formDialog = ref(false)

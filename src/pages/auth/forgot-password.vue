@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { ArrowLeft } from '@lucide/vue'
-import EFormField from '@/components/EFormField.vue'
+import EFormField from '@/encola/components/EFormField.vue'
 
 const email = ref('')
 const sent = ref(false)

@@ -10,7 +10,7 @@ export default defineConfig({
     vueDevTools(),
     vue(),
     vuetify({
-      styles: { configFile: 'src/theme/settings.scss' },
+      styles: { configFile: 'src/encola/settings.scss' },
     }),
   ],
   resolve: {

@@ -3,10 +3,10 @@
 // instantly; the instructions below show how to make it permanent.
 import { computed } from 'vue'
 import { RotateCcw, X } from '@lucide/vue'
-import EFormField from '@/components/EFormField.vue'
-import { useCustomizer } from '@/composables/useCustomizer'
-import { palettes } from '@/theme/palettes'
-import type { PaletteName } from '@/theme/palettes'
+import EFormField from './EFormField.vue'
+import { useCustomizer } from '../composables/useCustomizer'
+import { palettes } from '../palettes'
+import type { PaletteName } from '../palettes'
 
 const { open, primary, primaryValid, surface, radius, contentWidth, reset } =
   useCustomizer()
@@ -31,7 +31,7 @@ const colorsSnippet = computed(() => {
   return `// wherever you create Vuetify (this starter: src/main.ts
 // via createEncolaVuetify, or your own plugins/vuetify.ts)
 import { createVuetify } from 'vuetify'
-import { encola } from '@/theme'
+import { encola } from '@/encola'
 
 export default createVuetify({
   blueprint: encola({${primaryLine}
@@ -43,13 +43,13 @@ export default createVuetify({
 
 const radiusSnippet = computed(() => {
   const px = Number(radius.value) || 0
-  return `// src/theme/settings.scss
+  return `// src/encola/settings.scss
 $border-radius-root: ${rem(px)},
 $rounded: ('lg': ${rem(px * 2)}, 'xl': ${rem(px * 3)}),
 $card-border-radius: ${rem(px * 2)},
 $button-icon-border-radius: ${rem(px)},
 
-/* src/theme/overrides.css — floating surfaces */
+/* src/encola/overrides.css — floating surfaces */
 border-radius: ${rem(px * 2)}; /* menus, dialogs */`
 })
 

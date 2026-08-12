@@ -3,7 +3,7 @@
 // visual QA surface: check it in light AND dark after any theme change.
 import { ref } from 'vue'
 import { Bell, Mail, Plus, Search, Trash2 } from '@lucide/vue'
-import EFormField from '@/components/EFormField.vue'
+import EFormField from '@/encola/components/EFormField.vue'
 
 const dialog = ref(false)
 const tab = ref('account')

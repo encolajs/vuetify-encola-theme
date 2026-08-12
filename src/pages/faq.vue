@@ -12,7 +12,7 @@ const faqs = [
   },
   {
     q: 'Can I change the primary color?',
-    a: 'Yes — the palette lives in one place (src/theme/preset.ts). Swap the green scale for any Tailwind-style scale and both light and dark themes update.',
+    a: 'Yes — the palette lives in one place (src/encola/preset.ts). Swap the green scale for any Tailwind-style scale and both light and dark themes update.',
   },
   {
     q: 'Does it work with my existing Vuetify app?',

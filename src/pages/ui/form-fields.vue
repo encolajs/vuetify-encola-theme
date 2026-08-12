@@ -2,7 +2,7 @@
 // Every Vuetify input component, themed. Static labels via EFormField.
 import { ref } from 'vue'
 import { Mail, Search } from '@lucide/vue'
-import EFormField from '@/components/EFormField.vue'
+import EFormField from '@/encola/components/EFormField.vue'
 
 const password = ref('secret123')
 const number = ref(2)

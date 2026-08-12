@@ -4,7 +4,7 @@
 // and your options win over the theme's:
 //
 //   import { createVuetify } from 'vuetify'
-//   import { encola } from '@/theme'
+//   import { encola } from '@/encola'
 //
 //   export default createVuetify({
 //     blueprint: encola({ primary: '#e11d48', surface: 'zinc' }),
@@ -27,8 +27,8 @@ export { buildThemes }
 export type { EncolaColorOptions }
 export { palettes, derivePrimary } from './palettes'
 export type { PaletteName } from './palettes'
-export { useContentWidth } from './useContentWidth'
-export type { ContentWidth } from './useContentWidth'
+export { useContentWidth } from './composables/useContentWidth'
+export type { ContentWidth } from './composables/useContentWidth'
 
 /** The Encola theme as a Vuetify blueprint. */
 export function encola(colors: EncolaColorOptions = {}): VuetifyOptions {

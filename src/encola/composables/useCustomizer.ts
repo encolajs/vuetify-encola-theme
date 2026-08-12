@@ -6,9 +6,9 @@
 import { computed, effectScope, ref, watch } from 'vue'
 import type { EffectScope } from 'vue'
 import { useTheme } from 'vuetify'
-import { buildThemes } from '@/theme/preset'
-import { useContentWidth } from '@/theme/useContentWidth'
-import type { PaletteName } from '@/theme/palettes'
+import { buildThemes } from '../preset'
+import { useContentWidth } from './useContentWidth'
+import type { PaletteName } from '../palettes'
 
 const HEX_RE = /^#[0-9a-f]{6}$/i
 

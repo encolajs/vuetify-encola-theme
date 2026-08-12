@@ -10,11 +10,11 @@ import {
   SlidersHorizontal,
   Sun,
 } from '@lucide/vue'
-import AppSidebar from '@/components/AppSidebar.vue'
-import ThemeCustomizer from '@/components/ThemeCustomizer.vue'
-import { useSidebar } from '@/composables/useSidebar'
-import { useCustomizer } from '@/composables/useCustomizer'
-import { useContentWidth } from '@/theme/useContentWidth'
+import AppSidebar from '@/encola/components/AppSidebar.vue'
+import ThemeCustomizer from '@/encola/components/ThemeCustomizer.vue'
+import { useSidebar } from '@/encola/composables/useSidebar'
+import { useCustomizer } from '@/encola/composables/useCustomizer'
+import { useContentWidth } from '@/encola/composables/useContentWidth'
 
 const theme = useTheme()
 const { isMobile, collapsed, toggle } = useSidebar()
