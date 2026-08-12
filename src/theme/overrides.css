@@ -353,6 +353,27 @@ a:focus-visible {
 }
 
 /* ---- selection controls (checkbox / radio / switch) --------- */
+/* rem sizes: 2rem control box instead of Material's 40px touch target
+   ($selection-control-size is px-locked density arithmetic in SASS) */
+.v-selection-control--density-default {
+  --v-selection-control-size: 2rem;
+}
+
+.v-selection-control--density-comfortable {
+  --v-selection-control-size: 1.75rem;
+}
+
+.v-selection-control--density-compact {
+  --v-selection-control-size: 1.25rem;
+}
+
+/* checkbox/radio icons hug the start of the control box (switches keep
+   a centered input box — their thumb geometry depends on it) */
+.v-checkbox-btn .v-selection-control__input,
+.v-radio .v-selection-control__input {
+  justify-content: start;
+}
+
 /* no hover halo; focus is a ring like everything else */
 .v-selection-control__input::before {
   display: none;
