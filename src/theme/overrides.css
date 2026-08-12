@@ -321,6 +321,13 @@ a:focus-visible {
   border-radius: 4px;
 }
 
+/* ---- tabs --------------------------------------------------- */
+/* the tab bar carries its own bottom hairline; the active-tab slider
+   sits on top of it. No VDivider needed after VTabs. */
+.v-tabs:not(.v-tabs--vertical) {
+  border-bottom: 1px solid rgba(var(--v-border-color), var(--v-border-opacity));
+}
+
 /* ---- tables ------------------------------------------------- */
 .v-table {
   background: transparent;

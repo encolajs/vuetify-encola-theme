@@ -240,7 +240,6 @@ const breadcrumbs = [
         <VTab value="password">Password</VTab>
         <VTab value="notifications">Notifications</VTab>
       </VTabs>
-      <VDivider />
       <VTabsWindow v-model="tab" class="mt-4">
         <VTabsWindowItem value="account">
           <p class="text-body-medium">Manage your account details here.</p>

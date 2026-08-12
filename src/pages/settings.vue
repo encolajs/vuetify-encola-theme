@@ -42,7 +42,6 @@ function save() {
       <VTab value="password">Password</VTab>
       <VTab value="notifications">Notifications</VTab>
     </VTabs>
-    <VDivider class="mb-2" />
 
     <VTabsWindow v-model="tab">
       <!-- Profile -->
