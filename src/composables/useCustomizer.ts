@@ -7,6 +7,7 @@ import { computed, effectScope, ref, watch } from 'vue'
 import type { EffectScope } from 'vue'
 import { useTheme } from 'vuetify'
 import { buildThemes } from '@/theme/preset'
+import { useContentWidth } from '@/theme/useContentWidth'
 import type { PaletteName } from '@/theme/palettes'
 
 const HEX_RE = /^#[0-9a-f]{6}$/i
@@ -15,14 +16,13 @@ const DEFAULTS = {
   primary: '#6366f1',
   surface: 'slate' as PaletteName,
   radius: 4,
-  contentWidth: 'compact' as 'compact' | 'wide',
+  contentWidth: 'compact' as const,
 }
 
 const open = ref(false)
 const primary = ref(DEFAULTS.primary)
 const surface = ref<PaletteName>(DEFAULTS.surface)
 const radius = ref(DEFAULTS.radius)
-const contentWidth = ref<typeof DEFAULTS.contentWidth>(DEFAULTS.contentWidth)
 
 // Watchers live in a detached effect scope so they survive the unmount/HMR
 // of whichever component happened to call useCustomizer() first.
@@ -37,6 +37,7 @@ if (import.meta.hot) {
 
 export function useCustomizer() {
   const theme = useTheme()
+  const { contentWidth } = useContentWidth()
 
   const primaryValid = computed(() => HEX_RE.test(primary.value))
 

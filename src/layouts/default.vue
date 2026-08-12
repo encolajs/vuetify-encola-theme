@@ -14,10 +14,12 @@ import AppSidebar from '@/components/AppSidebar.vue'
 import ThemeCustomizer from '@/components/ThemeCustomizer.vue'
 import { useSidebar } from '@/composables/useSidebar'
 import { useCustomizer } from '@/composables/useCustomizer'
+import { useContentWidth } from '@/theme/useContentWidth'
 
 const theme = useTheme()
 const { isMobile, collapsed, toggle } = useSidebar()
 const customizer = useCustomizer()
+const { contentClass } = useContentWidth()
 
 const THEME_STORAGE_KEY = 'encola-theme'
 
@@ -76,10 +78,7 @@ onMounted(() => {
     <ThemeCustomizer />
 
     <VMain>
-      <div
-        class="pa-6 mx-auto e-content"
-        :class="`e-content--${customizer.contentWidth.value}`"
-      >
+      <div class="pa-6 mx-auto e-content" :class="contentClass">
         <slot />
       </div>
     </VMain>

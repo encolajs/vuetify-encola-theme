@@ -27,6 +27,8 @@ export { buildThemes }
 export type { EncolaColorOptions }
 export { palettes, derivePrimary } from './palettes'
 export type { PaletteName } from './palettes'
+export { useContentWidth } from './useContentWidth'
+export type { ContentWidth } from './useContentWidth'
 
 /** The Encola theme as a Vuetify blueprint. */
 export function encola(colors: EncolaColorOptions = {}): VuetifyOptions {
