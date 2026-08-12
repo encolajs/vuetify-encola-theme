@@ -163,6 +163,17 @@ a:focus-visible {
   --v-input-padding-top: 0px;
 }
 
+/* Similarly, VField.sass hardcodes no-label fields (all of ours) to
+   padding-top 0px / padding-bottom 16px + density modifier — Material's
+   trick for centering text when no label will float. Restore the symmetric
+   padding from settings.scss so the min-height formula stays
+   max(--v-input-control-height, 1.3125rem + 5.5px + 5.5px) = 32px exactly. */
+.v-field--single-line,
+.v-field--no-label {
+  --v-field-padding-top: 5.5px;
+  --v-field-padding-bottom: 5.5px;
+}
+
 /* hairline ring idle, primary ring on focus, error ring on error */
 .v-field--variant-outlined .v-field__outline {
   color: rgb(var(--v-theme-ring));
