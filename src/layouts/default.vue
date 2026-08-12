@@ -23,6 +23,9 @@ const { contentClass } = useContentWidth()
 
 const THEME_STORAGE_KEY = 'encola-theme'
 
+// TODO: replace with the real Lemon Squeezy purchase URL
+const BUY_URL = 'https://encolajs.lemonsqueezy.com/'
+
 function toggleTheme() {
   const next = theme.global.current.value.dark ? 'light' : 'dark'
   theme.global.name.value = next
@@ -54,6 +57,16 @@ onMounted(() => {
         />
       </VBtn>
       <VSpacer />
+      <VBtn
+        variant="flat"
+        color="primary"
+        class="mr-2"
+        :href="BUY_URL"
+        target="_blank"
+        rel="noopener"
+      >
+        Buy now
+      </VBtn>
       <VBtn
         icon
         variant="text"
