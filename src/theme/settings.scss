@@ -15,10 +15,9 @@
   // Runtime-switchable font stack; --v-font-body is set per theme.
   $body-font-family: (var(--v-font-body, ('Inter Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif))),
 
-  // Radius scale: buttons/inputs 6px, cards 8px, no pills.
-  $border-radius-root: 6px,
+  // Radius scale: buttons/inputs 4px, cards 8px, no pills.
+  $border-radius-root: 4px,
   $rounded: (
-    'sm': 4px,
     'lg': 8px,
     'xl': 12px,
   ),
@@ -36,7 +35,7 @@
     'title-large': ('size': 1.125rem, 'weight': 600, 'letter-spacing': normal),
     'title-medium': ('size': 1rem, 'weight': 600, 'letter-spacing': normal),
     'title-small': ('size': 0.875rem, 'weight': 600, 'letter-spacing': normal),
-    'body-large': ('size': 1rem, 'letter-spacing': normal),
+    'body-large': ('size': 0.875rem, 'letter-spacing': normal),
     'body-medium': ('size': 0.875rem, 'letter-spacing': normal),
     'body-small': ('size': 0.75rem, 'letter-spacing': normal),
     'label-large': ('size': 0.875rem, 'weight': 500, 'letter-spacing': normal),

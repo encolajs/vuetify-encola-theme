@@ -11,6 +11,11 @@ html {
   text-rendering: optimizeLegibility;
 }
 
+/* default text is 14px; headings and explicit type classes keep their rem sizes */
+body {
+  font-size: 0.875rem;
+}
+
 a:focus-visible {
   outline: 2px solid rgb(var(--v-theme-primary));
   outline-offset: 2px;
@@ -74,7 +79,7 @@ a:focus-visible {
   background: rgb(var(--v-theme-surface));
   color: rgb(var(--v-theme-on-surface));
   box-shadow: inset 0 0 0 1px rgba(var(--v-border-color), var(--v-border-opacity));
-  border-radius: 6px;
+  border-radius: 4px;
   font-size: 0.75rem;
   font-weight: 500;
   padding: 4px 8px;
@@ -176,7 +181,7 @@ a:focus-visible {
 .v-selection-control__wrapper:has(input:focus-visible) {
   outline: 2px solid rgb(var(--v-theme-primary));
   outline-offset: 2px;
-  border-radius: 6px;
+  border-radius: 4px;
 }
 
 .v-switch .v-switch__track {
@@ -199,7 +204,7 @@ a:focus-visible {
 }
 
 .v-list-item {
-  border-radius: 6px;
+  border-radius: 4px;
 }
 
 /* ---- tables ------------------------------------------------- */
