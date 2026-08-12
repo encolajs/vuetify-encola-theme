@@ -4,8 +4,9 @@
 import { computed } from 'vue'
 import { RotateCcw, X } from '@lucide/vue'
 import EFormField from '@/components/EFormField.vue'
-import { derivePrimary, palettes, useCustomizer } from '@/composables/useCustomizer'
-import type { PaletteName } from '@/composables/useCustomizer'
+import { useCustomizer } from '@/composables/useCustomizer'
+import { palettes } from '@/theme/palettes'
+import type { PaletteName } from '@/theme/palettes'
 
 const { open, primary, primaryValid, surface, radius, contentWidth, reset } =
   useCustomizer()
@@ -25,33 +26,19 @@ function paletteSwatch(item: unknown): string {
 
 const rem = (px: number) => `${px / 16}rem`.replace('.0rem', 'rem')
 
-const primarySnippet = computed(() => {
-  if (!primaryValid.value) return ''
-  const d = derivePrimary(primary.value)
-  return `// src/theme/preset.ts
-export const light = { colors: {
-  primary: '${d.light.primary}',
-  'primary-hover': '${d.light.hover}',
-  'on-primary': '${d.light.on}',
-} }
-export const dark = { colors: {
-  primary: '${d.dark.primary}',
-  'primary-hover': '${d.dark.hover}',
-  'on-primary': '${d.dark.on}',
-} }`
-})
+const colorsSnippet = computed(() => {
+  const primaryLine = primaryValid.value ? `\n    primary: '${primary.value}',` : ''
+  return `// wherever you create Vuetify (this starter: src/main.ts
+// via createEncolaVuetify, or your own plugins/vuetify.ts)
+import { createVuetify } from 'vuetify'
+import { encola } from '@/theme'
 
-const surfaceSnippet = computed(() => {
-  const p = palettes[surface.value]
-  return `// src/theme/preset.ts — swap the neutral scale
-// light                      // dark
-'surface-muted': '${p[50]}',   //   '${p[800]}'
-'surface-elevated': '${p[100]}', //   '${p[800]}'
-'surface-accented': '${p[200]}', //   '${p[700]}'
-ring: '${p[300]}',             //   '${p[700]}'
-'on-surface': '${p[700]}',     //   '${p[200]}'
-background/surface: '#ffffff', //   '${p[900]}'
-variables: { 'border-color': '${p[200]}' } // '${p[800]}'`
+export default createVuetify({
+  blueprint: encola({${primaryLine}
+    surface: '${surface.value}',
+  }),
+  // your own options here — they win over the blueprint
+})`
 })
 
 const radiusSnippet = computed(() => {
@@ -146,20 +133,16 @@ const widthSnippet = computed(
         </p>
 
         <div class="d-flex flex-column ga-3">
-          <div v-if="primarySnippet">
-            <div class="text-label-medium mb-1">1. Primary color</div>
-            <pre class="e-customizer__code">{{ primarySnippet }}</pre>
+          <div>
+            <div class="text-label-medium mb-1">1. Colors — the blueprint</div>
+            <pre class="e-customizer__code">{{ colorsSnippet }}</pre>
           </div>
           <div>
-            <div class="text-label-medium mb-1">2. Surface scale ({{ surface }})</div>
-            <pre class="e-customizer__code">{{ surfaceSnippet }}</pre>
-          </div>
-          <div>
-            <div class="text-label-medium mb-1">3. Border radius</div>
+            <div class="text-label-medium mb-1">2. Border radius</div>
             <pre class="e-customizer__code">{{ radiusSnippet }}</pre>
           </div>
           <div>
-            <div class="text-label-medium mb-1">4. Content width</div>
+            <div class="text-label-medium mb-1">3. Content width</div>
             <pre class="e-customizer__code">{{ widthSnippet }}</pre>
           </div>
         </div>

@@ -1,10 +1,21 @@
 // =============================================================
-// Layers 2–3 — createVuetify options: defaults, aliases, themes.
-// Colors follow the Tailwind slate/indigo scales (flat, no Material).
+// Layers 2–3 — the Encola blueprint: defaults + themes, generated
+// from a primary color and a Tailwind neutral scale.
+// Consumers pass the result as `blueprint` to their own createVuetify
+// call; anything they set there wins over the blueprint (Vuetify does
+// mergeDeep(blueprint, options)).
 // =============================================================
-import type { VuetifyOptions } from 'vuetify'
-import type { ThemeDefinition } from 'vuetify'
+import type { ThemeDefinition, VuetifyOptions } from 'vuetify'
+import { derivePrimary, palettes } from './palettes'
+import type { PaletteName } from './palettes'
 import { aliases as iconAliases, lucide } from './icons'
+
+export interface EncolaColorOptions {
+  /** brand color as a 6-digit hex; dark mode gets an auto-lightened variant */
+  primary?: string
+  /** Tailwind neutral scale for surfaces, borders and text */
+  surface?: PaletteName
+}
 
 const fontBody =
   "'Inter Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif"
@@ -28,143 +39,155 @@ const stateVariables = {
   'font-heading': fontBody,
 }
 
-export const light: ThemeDefinition = {
-  dark: false,
-  colors: {
-    background: '#ffffff',
-    'on-background': '#334155', // slate-700 — never pure black
-    surface: '#ffffff',
-    'on-surface': '#334155',
-    'surface-muted': '#f8fafc', // slate-50
-    'surface-elevated': '#f1f5f9', // slate-100
-    'surface-accented': '#e2e8f0', // slate-200
-    'surface-variant': '#f1f5f9',
-    'on-surface-variant': '#475569', // slate-600
-    ring: '#cbd5e1', // slate-300 — input/outline hairlines
+export function buildThemes({
+  primary = '#6366f1', // indigo-500 — oklch(0.585 0.233 277.12)
+  surface = 'slate',
+}: EncolaColorOptions = {}): { light: ThemeDefinition; dark: ThemeDefinition } {
+  const p = palettes[surface]
+  const d = derivePrimary(primary)
 
-    primary: '#6366f1', // indigo-500 — oklch(0.585 0.233 277.12)
-    'on-primary': '#ffffff',
-    'primary-hover': '#4f46e5', // indigo-600
-    secondary: '#64748b', // slate-500
-    'on-secondary': '#ffffff',
-    neutral: '#0f172a', // slate-900 — "inverted" solid buttons
-    'on-neutral': '#ffffff',
-    'neutral-hover': '#1e293b',
+  const light: ThemeDefinition = {
+    dark: false,
+    colors: {
+      background: '#ffffff',
+      'on-background': p[700],
+      surface: '#ffffff',
+      'on-surface': p[700],
+      'surface-muted': p[50],
+      'surface-elevated': p[100],
+      'surface-accented': p[200],
+      'surface-variant': p[100],
+      'on-surface-variant': p[600],
+      ring: p[300],
 
-    success: '#22c55e',
-    'on-success': '#ffffff',
-    info: '#3b82f6', // blue-500
-    'on-info': '#ffffff',
-    warning: '#f59e0b', // amber-500
-    'on-warning': '#ffffff',
-    error: '#ef4444', // red-500
-    'on-error': '#ffffff',
-    'error-hover': '#dc2626',
-  },
-  variables: {
-    ...stateVariables,
-    'border-color': '#e2e8f0', // slate-200 hairlines
-  },
+      primary: d.light.primary,
+      'on-primary': d.light.on,
+      'primary-hover': d.light.hover,
+      secondary: p[500],
+      'on-secondary': '#ffffff',
+      neutral: p[900], // "inverted" solid buttons
+      'on-neutral': '#ffffff',
+      'neutral-hover': p[800],
+
+      success: '#22c55e', // green-500
+      'on-success': '#ffffff',
+      info: '#3b82f6', // blue-500
+      'on-info': '#ffffff',
+      warning: '#f59e0b', // amber-500
+      'on-warning': '#ffffff',
+      error: '#ef4444', // red-500
+      'on-error': '#ffffff',
+      'error-hover': '#dc2626',
+    },
+    variables: {
+      ...stateVariables,
+      'border-color': p[200],
+    },
+  }
+
+  const dark: ThemeDefinition = {
+    dark: true,
+    colors: {
+      background: p[900],
+      'on-background': p[200],
+      surface: p[900],
+      'on-surface': p[200],
+      'surface-muted': p[800],
+      'surface-elevated': p[800],
+      'surface-accented': p[700],
+      'surface-variant': p[800],
+      'on-surface-variant': p[300],
+      ring: p[700],
+
+      primary: d.dark.primary,
+      'on-primary': d.dark.on,
+      'primary-hover': d.dark.hover,
+      secondary: p[400],
+      'on-secondary': p[900],
+      neutral: '#ffffff',
+      'on-neutral': p[900],
+      'neutral-hover': p[200],
+
+      success: '#4ade80', // green-400
+      'on-success': '#052e16',
+      info: '#60a5fa', // blue-400
+      'on-info': '#172554',
+      warning: '#fbbf24', // amber-400
+      'on-warning': '#451a03',
+      error: '#f87171', // red-400
+      'on-error': '#450a0a',
+      'error-hover': '#ef4444',
+    },
+    variables: {
+      ...stateVariables,
+      'border-color': p[800],
+    },
+  }
+
+  return { light, dark }
 }
 
-export const dark: ThemeDefinition = {
-  dark: true,
-  colors: {
-    background: '#0f172a', // slate-900
-    'on-background': '#e2e8f0', // slate-200
-    surface: '#0f172a',
-    'on-surface': '#e2e8f0',
-    'surface-muted': '#1e293b', // slate-800
-    'surface-elevated': '#1e293b',
-    'surface-accented': '#334155', // slate-700
-    'surface-variant': '#1e293b',
-    'on-surface-variant': '#cbd5e1',
-    ring: '#334155',
+export function encolaOptions(colors: EncolaColorOptions = {}): VuetifyOptions {
+  return {
+    defaults: {
+      global: {
+        ripple: false,
+      },
+      // flat is the "solid" look; pages pass color/variant directly:
+      // solid = flat + color, soft = tonal, ghost = text, link = plain
+      VBtn: { variant: 'flat' },
 
-    primary: '#818cf8', // indigo-400
-    'on-primary': '#1e1b4b', // indigo-950
-    'primary-hover': '#6366f1',
-    secondary: '#94a3b8', // slate-400
-    'on-secondary': '#0f172a',
-    neutral: '#ffffff',
-    'on-neutral': '#0f172a',
-    'neutral-hover': '#e2e8f0',
+      VCard: { flat: true },
+      VToolbar: { flat: true },
+      VAppBar: { flat: true },
 
-    success: '#4ade80',
-    'on-success': '#052e16',
-    info: '#60a5fa', // blue-400
-    'on-info': '#172554',
-    warning: '#fbbf24', // amber-400
-    'on-warning': '#451a03',
-    error: '#f87171', // red-400
-    'on-error': '#450a0a',
-    'error-hover': '#ef4444',
-  },
-  variables: {
-    ...stateVariables,
-    'border-color': '#1e293b', // slate-800 hairlines
-  },
-}
+      VTextField: { variant: 'outlined', hideDetails: 'auto' },
+      VTextarea: { variant: 'outlined', hideDetails: 'auto' },
+      VSelect: { variant: 'outlined', hideDetails: 'auto' },
+      VCombobox: { variant: 'outlined', hideDetails: 'auto' },
+      VAutocomplete: { variant: 'outlined', hideDetails: 'auto' },
+      VFileInput: { variant: 'outlined', hideDetails: 'auto' },
+      VNumberInput: { variant: 'outlined', hideDetails: 'auto' },
+      VDateInput: {
+        variant: 'outlined',
+        hideDetails: 'auto',
+        prependIcon: '',
+        prependInnerIcon: '$calendar',
+      },
+      VColorInput: { variant: 'outlined', hideDetails: 'auto' },
+      VOtpInput: { variant: 'outlined' },
 
-export const encolaOptions: VuetifyOptions = {
-  defaults: {
-    global: {
-      ripple: false,
+      VCheckbox: { color: 'primary', hideDetails: 'auto' },
+      VCheckboxBtn: { color: 'primary' },
+      VRadioGroup: { color: 'primary', hideDetails: 'auto' },
+      VSwitch: { color: 'primary', inset: true, hideDetails: 'auto' },
+      VSlider: { color: 'primary', hideDetails: 'auto', thumbSize: 16, trackSize: 4 },
+      VRangeSlider: { color: 'primary', hideDetails: 'auto', thumbSize: 16, trackSize: 4 },
+
+      VAlert: { variant: 'tonal', density: 'comfortable' },
+      VChip: { label: true, size: 'small' },
+      VBadge: { color: 'primary' },
+      VTabs: { color: 'primary', density: 'comfortable' },
+      VList: { density: 'compact' },
+      // stickToTarget keeps menus left-aligned with their activator even
+      // near the viewport edge (e.g. in the sidebar), where the default
+      // 12px viewportMargin clamp would nudge them inward.
+      VMenu: { offset: 6, stickToTarget: true },
+      VTooltip: { location: 'top' },
+      VExpansionPanel: { elevation: 0 },
+
+      VProgressLinear: { color: 'primary', rounded: true, height: 4 },
+      VProgressCircular: { color: 'primary', size: 24, width: 3 },
     },
-    // flat is the "solid" look; pages pass color/variant directly:
-    // solid = flat + color, soft = tonal, ghost = text, link = plain
-    VBtn: { variant: 'flat' },
-
-    VCard: { flat: true },
-    VToolbar: { flat: true },
-    VAppBar: { flat: true },
-
-    VTextField: { variant: 'outlined', hideDetails: 'auto' },
-    VTextarea: { variant: 'outlined', hideDetails: 'auto' },
-    VSelect: { variant: 'outlined', hideDetails: 'auto' },
-    VCombobox: { variant: 'outlined', hideDetails: 'auto' },
-    VAutocomplete: { variant: 'outlined', hideDetails: 'auto' },
-    VFileInput: { variant: 'outlined', hideDetails: 'auto' },
-    VNumberInput: { variant: 'outlined', hideDetails: 'auto' },
-    VDateInput: {
-      variant: 'outlined',
-      hideDetails: 'auto',
-      prependIcon: '',
-      prependInnerIcon: '$calendar',
+    theme: {
+      defaultTheme: 'light',
+      variations: false,
+      themes: buildThemes(colors),
     },
-    VColorInput: { variant: 'outlined', hideDetails: 'auto' },
-    VOtpInput: { variant: 'outlined' },
-
-    VCheckbox: { color: 'primary', hideDetails: 'auto' },
-    VCheckboxBtn: { color: 'primary' },
-    VRadioGroup: { color: 'primary', hideDetails: 'auto' },
-    VSwitch: { color: 'primary', inset: true, hideDetails: 'auto' },
-    VSlider: { color: 'primary', hideDetails: 'auto', thumbSize: 16, trackSize: 4 },
-    VRangeSlider: { color: 'primary', hideDetails: 'auto', thumbSize: 16, trackSize: 4 },
-
-    VAlert: { variant: 'tonal', density: 'comfortable' },
-    VChip: { label: true, size: 'small' },
-    VBadge: { color: 'primary' },
-    VTabs: { color: 'primary', density: 'comfortable' },
-    VList: { density: 'compact' },
-    // stickToTarget keeps menus left-aligned with their activator even
-    // near the viewport edge (e.g. in the sidebar), where the default
-    // 12px viewportMargin clamp would nudge them inward.
-    VMenu: { offset: 6, stickToTarget: true },
-    VTooltip: { location: 'top' },
-    VExpansionPanel: { elevation: 0 },
-
-    VProgressLinear: { color: 'primary', rounded: true, height: 4 },
-    VProgressCircular: { color: 'primary', size: 24, width: 3 },
-  },
-  theme: {
-    defaultTheme: 'light',
-    variations: false,
-    themes: { light, dark },
-  },
-  icons: {
-    defaultSet: 'lucide',
-    aliases: iconAliases,
-    sets: { lucide },
-  },
+    icons: {
+      defaultSet: 'lucide',
+      aliases: iconAliases,
+      sets: { lucide },
+    },
+  }
 }
