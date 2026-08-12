@@ -131,8 +131,8 @@ const widthSnippet = computed(
 
       <EFormField label="Content width">
         <VRadioGroup v-model="contentWidth">
-          <VRadio label="Compact — content capped at 1200px" value="compact" />
-          <VRadio label="Wide — content fills the whole area" value="wide" />
+          <VRadio label="Compact" value="compact" />
+          <VRadio label="Wide" value="wide" />
         </VRadioGroup>
       </EFormField>
 
