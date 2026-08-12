@@ -23,8 +23,7 @@ const { contentClass } = useContentWidth()
 
 const THEME_STORAGE_KEY = 'encola-theme'
 
-// TODO: replace with the real Lemon Squeezy purchase URL
-const BUY_URL = 'https://encolajs.lemonsqueezy.com/'
+const BUY_URL = 'https://payhip.com/b/Bnds3'
 
 function toggleTheme() {
   const next = theme.global.current.value.dark ? 'light' : 'dark'
