@@ -179,7 +179,12 @@ a:focus-visible {
   display: none;
 }
 
+/* the item's grid template ('prepend content append' / max-content 1fr auto)
+   keeps the empty 1fr content track even when its cell is display: none, so
+   the template itself collapses to a single centered prepend track */
 .v-navigation-drawer--rail .v-list-item {
+  grid-template-areas: 'prepend';
+  grid-template-columns: max-content;
   justify-content: center;
 }
 
