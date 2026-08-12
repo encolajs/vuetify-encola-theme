@@ -179,6 +179,12 @@ a:focus-visible {
   padding-inline-start: 1.625rem;
 }
 
+/* user menu activator reads as a button: hairline ring on the muted panel */
+.e-sidebar__user.v-list-item {
+  border: 1px solid rgba(var(--v-border-color), var(--v-border-opacity));
+  background: rgb(var(--v-theme-surface));
+}
+
 /* rail mode: center the logo mark, drop section headers */
 .v-navigation-drawer--rail .e-sidebar__logo {
   justify-content: center;

@@ -273,6 +273,7 @@ const userMenu = [
           <template #activator="{ props: menuProps }">
             <VListItem
               v-tooltip="{ text: user.name, location: 'end', disabled: !rail }"
+              class="e-sidebar__user"
               :title="user.name"
               :subtitle="user.email"
               aria-label="User menu"
