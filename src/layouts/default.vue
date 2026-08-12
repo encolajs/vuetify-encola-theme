@@ -7,13 +7,17 @@ import {
   Moon,
   PanelLeftClose,
   PanelLeftOpen,
+  SlidersHorizontal,
   Sun,
 } from '@lucide/vue'
 import AppSidebar from '@/components/AppSidebar.vue'
+import ThemeCustomizer from '@/components/ThemeCustomizer.vue'
 import { useSidebar } from '@/composables/useSidebar'
+import { useCustomizer } from '@/composables/useCustomizer'
 
 const theme = useTheme()
 const { isMobile, collapsed, toggle } = useSidebar()
+const customizer = useCustomizer()
 
 const THEME_STORAGE_KEY = 'encola-theme'
 
@@ -52,16 +56,30 @@ onMounted(() => {
         icon
         variant="text"
         size="small"
-        class="mr-2"
         aria-label="Toggle theme"
         @click="toggleTheme"
       >
         <VIcon :icon="theme.global.current.value.dark ? Sun : Moon" size="18" />
       </VBtn>
+      <VBtn
+        icon
+        variant="text"
+        size="small"
+        class="mr-2"
+        aria-label="Customize theme"
+        @click="customizer.open.value = true"
+      >
+        <VIcon :icon="SlidersHorizontal" size="18" />
+      </VBtn>
     </VAppBar>
 
+    <ThemeCustomizer />
+
     <VMain>
-      <div class="pa-6 mx-auto" style="max-width: 1200px">
+      <div
+        class="pa-6 mx-auto"
+        :style="{ maxWidth: customizer.contentWidth.value === 'compact' ? '1200px' : 'none' }"
+      >
         <slot />
       </div>
     </VMain>
