@@ -529,6 +529,26 @@ a:focus-visible {
   font-weight: 600;
 }
 
+/* ---- snackbars ----------------------------------------------- */
+/* Material toasts: inverted surface-variant fill, 4px corners, shadow.
+   Restyle as floating surfaces like menus — page surface, hairline
+   ring, card radius, no shadow. Colored snackbars (color="success")
+   keep their solid fill, same as flat buttons. */
+.v-snackbar__wrapper {
+  border-radius: 0.5rem;
+  box-shadow: none;
+}
+
+.v-snackbar__wrapper:not([class*='bg-']) {
+  background: rgb(var(--v-theme-surface));
+  color: rgb(var(--v-theme-on-surface));
+  border: 1px solid rgba(var(--v-border-color), var(--v-border-opacity));
+}
+
+.v-snackbar__content {
+  letter-spacing: 0;
+}
+
 /* ---- E* wrapper components ---------------------------------- */
 .e-form-field {
   display: block;
