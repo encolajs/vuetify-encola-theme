@@ -509,6 +509,16 @@ a:focus-visible {
   margin: 0.125rem;
 }
 
+/* ---- date picker -------------------------------------------- */
+/* Vuetify sizes day buttons with a layered rule (--v-btn-height: 24px)
+   that our unlayered size re-emits above override to 2rem — the icon
+   buttons grow to 44px, the 7-column week grid outgrows the picker's
+   328px width, and the weekend columns get clipped. Re-emit the compact
+   day height unlayered, in rem. */
+.v-date-picker-month__day .v-btn.v-date-picker-month__day-btn {
+  --v-btn-height: 1.5rem;
+}
+
 /* ---- tables ------------------------------------------------- */
 .v-table {
   background: transparent;
