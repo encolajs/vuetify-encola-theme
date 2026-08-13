@@ -1,0 +1,5 @@
+# sass pulls in @parcel/watcher for its --watch mode only; its native
+# build script never needs to run here (vite build doesn't watch), so
+# skip it instead of approving a node-gyp compile in CI.
+allowBuilds:
+  '@parcel/watcher': false
