@@ -23,8 +23,6 @@ const { contentClass } = useContentWidth()
 
 const THEME_STORAGE_KEY = 'encola-theme'
 
-const BUY_URL = 'https://payhip.com/b/Bnds3'
-
 function toggleTheme() {
   const next = theme.global.current.value.dark ? 'light' : 'dark'
   theme.global.name.value = next
@@ -56,16 +54,6 @@ onMounted(() => {
         />
       </VBtn>
       <VSpacer />
-      <VBtn
-        variant="flat"
-        color="primary"
-        class="mr-2"
-        :href="BUY_URL"
-        target="_blank"
-        rel="noopener"
-      >
-        Buy now
-      </VBtn>
       <VBtn
         icon
         variant="text"
